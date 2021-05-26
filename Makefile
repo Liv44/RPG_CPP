@@ -21,3 +21,8 @@ Potion.o : Potion.cpp Potion.hpp
 
 clean : 
 	rm *.o
+
+fclean : ckean
+	rm rpg
+
+re : clean rpg
