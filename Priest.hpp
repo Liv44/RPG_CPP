@@ -8,13 +8,15 @@ using namespace std;
 
 class Priest : public Character {
     private:
+    int vitesse;
     int mp;
     int maxMp;
     bool tryUsingMp(int mp);
 
     public:
-    Priest(string name) : Character(name,Job::PriestJob,25,200,20,1000), maxMp(100), mp(100){}
+    Priest(string name) : Character(name,Job::PriestJob,25,200,20,1000), vitesse(1),maxMp(100), mp(100){}
     void healAllie(Character& other);
+
 };
 
 #endif
