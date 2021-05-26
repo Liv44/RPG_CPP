@@ -14,5 +14,5 @@ void Priest::healAllie(Character& other){
             return;
     }
     // int randomHeal = rand() % 200 + 201;
-    other.heal(rand()%200 + 201);
+    other.heal(rand()%201 + 200);
 }

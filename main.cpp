@@ -22,6 +22,11 @@ int main(int argc, char const *argv[])
 
         conan.attack(gandalf);
         cout << "Gandalf a " << gandalf.getCurrentHp() << " PV" << endl;
+
+        // gandalf.heal(rand()%201 + 200);
+
+        // cout << "Gandalf a " << gandalf.getCurrentHp() << " PV" << endl;
+        
         conan.enterFury();
 
         Potion small(3,100);
