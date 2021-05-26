@@ -6,6 +6,7 @@
 #include "./Mage.hpp"
 #include "./Potion.hpp"
 #include "./Exceptions.hpp"
+#include "./Priest.hpp"
 
 
 using namespace std;
