@@ -1,4 +1,7 @@
 #include "Jeux.hpp"
+#include <iostream>
+#include <ostream>
+#include <iterator>
 
 Jeux::Jeux()
 {
@@ -16,7 +19,7 @@ void Jeux::menuPrincipale()
     cout << "5 : Quit game ! " << endl;
 
     cout << endl << "Choix : ";
-    cin >> Choix;
+    cin >> choix;
 
     switch(choix)
     {

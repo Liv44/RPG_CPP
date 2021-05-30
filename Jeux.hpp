@@ -1,3 +1,8 @@
+#ifndef JEUX_HPP
+#define JEUX_HPP
+
+using namespace std;
+
 class Jeux
 {   
 public:
@@ -11,3 +16,5 @@ private:
     int choix;
     bool playing;
 };
+
+#endif

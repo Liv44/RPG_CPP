@@ -4,6 +4,9 @@ rpg : main.o Character.o Mage.o Barbarian.o Exceptions.o Potion.o
 main.o : main.cpp
 	g++ -c main.cpp -o main.o
 
+Jeux.o: Jeux.cpp Jeux.hpp
+	g++ -c Jeux.cpp -o Jeux.o
+
 Character.o : Character.cpp Character.hpp
 	g++ -c Character.cpp -o Character.o
 

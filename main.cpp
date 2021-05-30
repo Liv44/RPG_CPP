@@ -19,10 +19,9 @@ int main(int argc, char const *argv[])
 
     while (jeux.getPlaying()) {
 
-        jeux.menuPrincipale();
-
         try {
             srand(time(NULL));
+            jeux.menuPrincipale();
             Mage gandalf("Gandalf");
             Barbarian conan("Conan");
             conan.enterFury();
