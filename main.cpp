@@ -14,7 +14,6 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-    srand(time(NULL));
     // Jeux jeux;
 
     // while (jeux.getPlaying()) {
@@ -22,17 +21,18 @@ int main(int argc, char const *argv[])
         // jeux.menuPrincipale();
 
         try {
+
+            srand(time(NULL));
+
             Mage gandalf("Gandalf");
             Barbarian conan("Conan");
             conan.enterFury();
             conan.attack(gandalf);
 
             conan.attack(gandalf);
-            cout << "Gandalf a " << gandalf.getCurrentHp() << " PV" << endl;
+            // cout << "Gandalf a " << gandalf.getCurrentHp() << " PV" << endl;
 
-            cout << "Statut personnage :\n " << "Name :" << gandalf.name << "\n Class:"<< endl;
-
-            
+            cout << "Statut personnage:\n " << "Name: " << gandalf.name << "\n Class: " << gandalf.job <<"\n PV: "<< gandalf.hp << " / " << gandalf.maxHp  << endl;
 
             // gandalf.heal(rand()%201 + 200);
 
@@ -47,6 +47,7 @@ int main(int argc, char const *argv[])
             gandalf += small;
             gandalf += small;
             cout << "All potions were drunk !" << endl;
+
         }
         catch(IllegalFury& illegalF){
             cout << "An illegal barbarian fury operation occured : " << illegalF.what() << endl;

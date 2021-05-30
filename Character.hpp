@@ -20,17 +20,15 @@ class Character
 
     public:
     string name;
+    int maxHp;
+    int hp;
+    Job job;
 
     protected:
     
     int physicalAttack;
     int magicAttack;
     int defense;
-    int maxHp;
-    int hp;
-
-    private:
-    Job job;
 
     public:
     Character() : Character("John Doe",FreelancerJob,100,100,50,1000){}
