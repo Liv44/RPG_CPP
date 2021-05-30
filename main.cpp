@@ -14,14 +14,14 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
+    srand(time(NULL));
+    // Jeux jeux;
 
-    Jeux jeux;
+    // while (jeux.getPlaying()) {
 
-    while (jeux.getPlaying()) {
+        // jeux.menuPrincipale();
 
         try {
-            srand(time(NULL));
-            jeux.menuPrincipale();
             Mage gandalf("Gandalf");
             Barbarian conan("Conan");
             conan.enterFury();
@@ -29,6 +29,8 @@ int main(int argc, char const *argv[])
 
             conan.attack(gandalf);
             cout << "Gandalf a " << gandalf.getCurrentHp() << " PV" << endl;
+
+            cout << "Statut personnage :\n " << "Name :" << gandalf.name << "\n Class:"<< endl;
 
             
 
@@ -57,7 +59,7 @@ int main(int argc, char const *argv[])
         }
 
         cout << "End of combat" << endl;
-    }
+    // }
 
     return 0;
 }
