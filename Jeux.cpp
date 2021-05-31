@@ -1,7 +1,4 @@
 #include "Jeux.hpp"
-#include <iostream>
-#include <ostream>
-#include <iterator>
 
 Jeux::Jeux()
 {

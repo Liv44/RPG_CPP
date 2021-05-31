@@ -1,5 +1,8 @@
 #ifndef JEUX_HPP
 #define JEUX_HPP
+#include <iostream>
+#include <ostream>
+#include <iterator>
 
 using namespace std;
 

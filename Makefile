@@ -1,5 +1,5 @@
-rpg : main.o Character.o Mage.o Barbarian.o Exceptions.o Potion.o
-	g++ main.o Character.o Mage.o Barbarian.o Exceptions.o Potion.o -o rpg
+rpg : main.o Jeux.o Character.o Mage.o Barbarian.o Exceptions.o Potion.o
+	g++ main.o Jeux.o Character.o Mage.o Barbarian.o Exceptions.o Potion.o -o rpg
 
 main.o : main.cpp
 	g++ -c main.cpp -o main.o

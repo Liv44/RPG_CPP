@@ -14,15 +14,14 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-    // Jeux jeux;
+    Jeux jeux;
 
-    // while (jeux.getPlaying()) {
+    while (jeux.getPlaying()) {
 
-        // jeux.menuPrincipale();
+        srand(time(NULL));
+        jeux.menuPrincipale();
 
         try {
-
-            srand(time(NULL));
 
             Mage gandalf("Gandalf");
             Barbarian conan("Conan");
@@ -60,7 +59,7 @@ int main(int argc, char const *argv[])
         }
 
         cout << "End of combat" << endl;
-    // }
+    }
 
     return 0;
 }
