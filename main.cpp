@@ -19,44 +19,44 @@ int main(int argc, char const *argv[])
     while (jeux.getPlaying()) {
 
         srand(time(NULL));
+        jeux.initJeux();
         jeux.menuPrincipale();
 
-        try {
-
-            Mage gandalf("Gandalf");
+        
+        Mage gandalf("Gandalf");
             Barbarian conan("Conan");
-            conan.enterFury();
+            // conan.enterFury();
             conan.attack(gandalf);
 
             conan.attack(gandalf);
             // cout << "Gandalf a " << gandalf.getCurrentHp() << " PV" << endl;
-
-            cout << "Statut personnage:\n " << "Name: " << gandalf.name << "\n Class: " << gandalf.job <<"\n PV: "<< gandalf.hp << " / " << gandalf.maxHp  << endl;
 
             // gandalf.heal(rand()%201 + 200);
 
             // cout << "Gandalf a " << gandalf.getCurrentHp() << " PV" << endl;
             
-            conan.enterFury();
+            // conan.enterFury();
 
-            Potion small(3,100);
+            // Potion small(3,100);
         
-            gandalf += small;
-            gandalf += small;
-            gandalf += small;
-            gandalf += small;
-            cout << "All potions were drunk !" << endl;
+            // gandalf += small;
+            // gandalf += small;
+            // gandalf += small;
+            // gandalf += small;
+            // cout << "All potions were drunk !" << endl;
+        
 
-        }
-        catch(IllegalFury& illegalF){
-            cout << "An illegal barbarian fury operation occured : " << illegalF.what() << endl;
-        }
-        catch(EmptyPotion& ep){
-            cout << "An illegal barbarian fury operation occured : " << ep.what() << endl;
-        }
-        catch(std::exception& e){
-            cout << "An exception occured : " << e.what() << endl;
-        }
+        // try {
+        // // }
+        // // catch(IllegalFury& illegalF){
+        // //     cout << "An illegal barbarian fury operation occured : " << illegalF.what() << endl;
+        // // }
+        // // catch(EmptyPotion& ep){
+        // //     cout << "An illegal barbarian fury operation occured : " << ep.what() << endl;
+        // // }
+        // // catch(std::exception& e){
+        // //     cout << "An exception occured : " << e.what() << endl;
+        // }
 
         cout << "End of combat" << endl;
     }
