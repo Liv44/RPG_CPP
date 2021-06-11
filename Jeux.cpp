@@ -3,6 +3,7 @@
 #include "Barbarian.hpp"
 #include "Mage.hpp"
 #include "Priest.hpp"
+#include "Potion.hpp"
 
 Jeux::Jeux()
 {
@@ -11,40 +12,49 @@ Jeux::Jeux()
 }
 
 ////////////////////////////////////////////////// INTRO /////////////////////////////////////////////////////////////////////////////////////////
+void Jeux::intro(){
+    cout << "Ah vous voilà enfin ! Bienvenue sur notre jeu RPG\n" << endl; 
+    cout << "Les règles sont simples, le but de notre jeu est de choisir une action a faire effectuer par vos personnages sur vos ennemies ou alliés.\n" << endl;
+    cout << "Pour finir le jeu il faudra que soit l'équipe allié battent l'équipe des montres ou vise versa.\n" << endl;
+    cout << "Sur ce bonne aventure et surtout bonne chance !\n" << endl;
 
-void Jeux::initJeux(){
-    cout << "Entrer nom du personnage: " << endl;
-}
-
-void Jeux::job(){
-    cout << "Choississez votre classe :\n" << endl;
-
-    cout << "1 : Mage" << endl;
-    cout << "2 : Prètre" << endl;
-    cout << "3 : Barbarian" << endl;;
+    cout << "1 : START YOUR ADVENTURE !" << endl;
+    cout << "2 : QUIT !" << endl;
     cout << endl << "Choix : ";
     cin >> choix;
 
     switch(choix)
     {   
-        case 1:
-            cout << "Vous avez choisit la classe Mage" << endl;
-            Job::MageJob;
-
+        case 1:;
+        
         case 2:
-            cout << "Vous avez choisit la classe Prètre" << endl;
-            Job::PriestJob;
-
-        case 3:
-            cout << "Vous avez choisit la classe Barbarian" << endl;
-            Job::BarbarianJob;
+            playing = false;
+            break;
 
         default:
-            Jeux::menuPrincipale();
-
+            break;
     }
-}
+}  
 
+///////////////////////////////////////////// NOM PERSONNAGE ////////////////////////////////////////////////////////////////////////////////////
+
+void Jeux::namePerso(){
+    cout << "Entrer le nom de votre Mage: " << endl;
+    cin >> mageName;
+    cout << "Le nom de votre mage est " << mageName<< endl;
+    Mage mage(mageName);
+
+    cout << "\nEntrer le nom de votre Prètre: " << endl;
+    cin >> priestName;
+    cout << "Le nom de votre prètre est " << priestName << endl;
+    Priest priest(priestName);
+
+    cout << "\nEntrer le nom de votre Barbarian: " << endl;
+    cin >> barbarianName;
+    cout << "Le nom de votre barbarian est " << barbarianName << "\n" << endl;
+    Barbarian barbarian(barbarianName);
+
+}
 /////////////////////////////////// PERSONNAGE VS MONSTRE /////////////////////////////////////////////////////////////////////////////////////
 
 void Jeux::encounter()
@@ -60,20 +70,16 @@ void Jeux::encounter()
     switch(choix)
     {   
         case 1:
-            cout << "Vous avez attaqué le monstre n°1" << endl;
-            Jeux::menuPrincipale();
+            cout << "Vous avez attaqué le monstre n°1\n" << endl;
 
         case 2:
-            cout << "Vous avez attaqué le monstre n°2" << endl;
-            Jeux::menuPrincipale();
+            cout << "Vous avez attaqué le monstre n°2\n" << endl;
 
         case 3:
-            cout << "Vous avez attaqué le monstre n°3" << endl;
-            Jeux::menuPrincipale(); 
+            cout << "Vous avez attaqué le monstre n°3\n" << endl;
             
         case 4:
-            Jeux::menuPrincipale();
-            break;
+
         default:
             break;
 
@@ -86,22 +92,21 @@ void Jeux::encounter()
 void Jeux::statPerso()
 {
     cout << "Statut personnage:\n " << endl;
-    cout << "Name: "  << endl; Jeux::initJeux();
-    cout << "Class: " << endl; Jeux::job();
+    cout << "Name: " << endl;
+    cout << "Class: " << endl;
     cout << "PV: "<< 100 << " / " <<  1000<< endl;
 }
 
-///////////////////////////////////////// MENU DU JEU ////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////// TOUR ET ATTAQUE DES PERSONNAGES ////////////////////////////////////////////////////////////////////////////////////////////
 
-void Jeux::menuPrincipale()
+void Jeux::mageAttaque()
 {
-    cout << "Menu Principale" << endl;
-    cout << "1 : Attaque" << endl;
-    cout << "2 : Action de la classe" << endl; // Barbarian -> Furie/ Mage -> Boule de feu / Priest -> Soin
+    cout << "MAGE TURN:\n" << endl;
+    cout << "1 : Attaque basic" << endl;
+    cout << "2 : Boule de feu" << endl; // Barbarian -> Furie/ Mage -> Boule de feu / Priest -> Soin
     cout << "3 : Boire une potion" << endl; // Le groupe disposera d'une potion commune au lancement du combat
     cout << "4 : Statut personnage" << endl;
-    cout << "5 : Do nothing " << endl;
-    cout << "6 : Quit game ! " << endl;
+    cout << "5 : Quit game ! " << endl;
 
     cout << endl << "Choix : ";
     cin >> choix;
@@ -112,7 +117,73 @@ void Jeux::menuPrincipale()
         case 1:
             Jeux::encounter();
         case 2:
-            Jeux::job();
+            Jeux::encounter();
+        case 3:
+            // Potion small(1,300);
+        case 4: 
+            Jeux::statPerso();
+        case 5:
+            playing = false;
+            break;
+        default:
+            break;
+
+    }
+}
+
+void Jeux::priestAttaque()
+{
+    cout << "PRIEST TURN:\n" << endl;
+    cout << "1 : Attaque -> basic" << endl;
+    cout << "2 : Attaque -> Soin" << endl; // Barbarian -> Furie/ Mage -> Boule de feu / Priest -> Soin
+    cout << "3 : Boire une potion" << endl; // Le groupe disposera d'une potion commune au lancement du combat
+    cout << "4 : Statut personnage" << endl;
+    cout << "5 : Quit game ! " << endl;
+
+    cout << endl << "Choix : ";
+    cin >> choix;
+    cout << "\n" << endl;
+
+    switch(choix)
+    {   
+        case 1:
+            Jeux::encounter();
+        case 2:
+            Jeux::encounter();
+        case 3:
+            // Potion small(1,300);
+        case 4: 
+            Jeux::statPerso();
+        case 5:
+            playing = false;
+            break;
+        default:
+            break;
+
+    }
+}
+
+void Jeux::barbarianAttaque()
+{
+    cout << "BARBARIAN TURN:\n" << endl;
+    cout << "1 : Attaque -> basic" << endl;
+    cout << "2 : Attaque -> Furie mode" << endl; // Barbarian -> Furie/ Mage -> Boule de feu / Priest -> Soin
+    cout << "3 : Boire une potion" << endl; // Le groupe disposera d'une potion commune au lancement du combat
+    cout << "4 : Statut personnage" << endl;
+    cout << "5 : Quit game ! " << endl;
+
+    cout << endl << "Choix : ";
+    cin >> choix;
+    cout << "\n" << endl;
+
+    switch(choix)
+    {   
+        case 1:
+            Jeux::encounter();
+        case 2:
+            Jeux::encounter();
+        case 3:
+            // Potion small(1,300);
         case 4: 
             Jeux::statPerso();
         case 5:

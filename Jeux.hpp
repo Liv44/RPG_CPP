@@ -11,18 +11,23 @@ class Jeux
 public:
     Jeux();
 
-    void initJeux();
-    void menuPrincipale();
+    void intro();
+    void namePerso();
+    void mageAttaque();
+    void priestAttaque();
+    void barbarianAttaque();
     void statPerso();
     void encounter();
-    void job();
 
     inline bool getPlaying() const {return this->playing; }
+
+    string mageName;
+    string priestName;
+    string barbarianName;
 
 private:
     int choix;
     bool playing;
-
     // Encounter 
 };
 

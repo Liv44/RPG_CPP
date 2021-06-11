@@ -19,8 +19,12 @@ int main(int argc, char const *argv[])
     while (jeux.getPlaying()) {
 
         srand(time(NULL));
-        jeux.initJeux();
-        jeux.menuPrincipale();
+
+        jeux.intro();
+        jeux.namePerso();
+        jeux.mageAttaque();
+        jeux.priestAttaque();
+        jeux.barbarianAttaque();
 
         
         Mage gandalf("Gandalf");
