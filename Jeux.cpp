@@ -1,9 +1,10 @@
 #include "Jeux.hpp"
-#include "Character.hpp"
-#include "Barbarian.hpp"
-#include "Mage.hpp"
-#include "Priest.hpp"
-#include "Potion.hpp"
+#include "./Character.hpp"
+#include "./Barbarian.hpp"
+#include "./Mage.hpp"
+#include "./Priest.hpp"
+#include "./Potion.hpp"
+#include "Monstre.hpp"
 
 Jeux::Jeux()
 {
@@ -57,32 +58,41 @@ void Jeux::namePerso(){
 }
 /////////////////////////////////// PERSONNAGE VS MONSTRE /////////////////////////////////////////////////////////////////////////////////////
 
-void Jeux::encounter()
-{
+void Jeux::mageAttaque()
+{   
+    Mage mage(mageName);
+    Monstre monstre1("monstre1");
+    Monstre monstre2("monstre2");
+    Monstre monstre3("monstre3");
+
     cout << "Attaque : \n" << endl;
-    cout << "1 : Attaque monstre n°1" << endl;
-    cout << "2 : Attaque monstre n°2" << endl;
-    cout << "3 : Attaque monstre n°3" << endl;
+    cout << "1 : Attaque monstre n°1" << "monstre1 a " << monstre1.getCurrentHp() << " PV" << endl;
+    cout << "2 : Attaque monstre n°2" << "monstre2 a " << monstre2.getCurrentHp() << " PV" <<endl;
+    cout << "3 : Attaque monstre n°3" << "monstre3 a " << monstre3.getCurrentHp() << " PV" <<endl;
     cout << "4 : Back to menu !" << endl;
     cout << endl << "Choix : ";
     cin >> choix;
 
-    switch(choix)
-    {   
-        case 1:
-            cout << "Vous avez attaqué le monstre n°1\n" << endl;
-            // mage.attack(monster1)
-        case 2:
-            cout << "Vous avez attaqué le monstre n°2\n" << endl;
-            // mage.attack(monster2)
-        case 3:
-            cout << "Vous avez attaqué le monstre n°3\n" << endl;
-            // mage.attack(monster3)
-        case 4:
+    if(choix == 1){
+        cout << "Vous avez attaqué le monstre n°1\n" << endl;
+        mage.attack(monstre1);
+        cout << "monstre1 a " << monstre1.getCurrentHp() << " PV" << endl;
 
-        default:
-            break;
+    } else if (choix == 2) {
+        cout << "Vous avez attaqué le monstre n°2\n" << endl;
+        mage.attack(monstre2);
+        cout << "monstre2 a " << monstre2.getCurrentHp() << " PV" << endl;
 
+    } else if (choix == 3) {
+        cout << "Vous avez attaqué le monstre n°3\n" << endl;
+        mage.attack(monstre3);
+        cout << "monstre3 a " << monstre3.getCurrentHp() << " PV" << endl;
+
+    } else if (choix == 4){
+        Jeux::MageTurn();
+
+    } else {
+        cout << "Choisit un chiffre valable !\n" << endl;
     }
 
 }
@@ -99,9 +109,11 @@ void Jeux::statMage()
 
 ///////////////////////////////////////// TOUR ET ATTAQUE DES PERSONNAGES ////////////////////////////////////////////////////////////////////////////////////////////
 
-void Jeux::mageAttaque()
+void Jeux::MageTurn()
 {
     cout << "MAGE TURN:\n" << endl;
+    cout << "Nombre de joueurs : " << Character::getRegisteredNumber()<<endl;
+    cout << "Nombre de monstres : " << Monstre::getRegisteredMonster()<<endl;
     cout << "1 : Attaque basic" << endl;
     cout << "2 : Boule de feu" << endl; // Barbarian -> Furie/ Mage -> Boule de feu / Priest -> Soin
     cout << "3 : Boire une potion" << endl; // Le groupe disposera d'une potion commune au lancement du combat
@@ -115,9 +127,9 @@ void Jeux::mageAttaque()
     switch(choix)
     {   
         case 1:
-            Jeux::encounter();
+            Jeux::mageAttaque();
         case 2:
-            Jeux::encounter();
+            Jeux::mageAttaque();
         case 3:
             // Potion small(1,300);
         case 4: 
@@ -147,9 +159,9 @@ void Jeux::priestAttaque()
     switch(choix)
     {   
         case 1:
-            Jeux::encounter();
+            // Jeux::encounter();
         case 2:
-            Jeux::encounter();
+            // Jeux::encounter();
         case 3:
             // Potion small(1,300);
         case 4: 
@@ -179,9 +191,9 @@ void Jeux::barbarianAttaque()
     switch(choix)
     {   
         case 1:
-            Jeux::encounter();
+            // Jeux::encounter();
         case 2:
-            Jeux::encounter();
+            // Jeux::encounter();
         case 3:
             // Potion small(1,300);
         case 4: 
