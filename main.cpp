@@ -22,25 +22,31 @@ int main(int argc, char const *argv[])
         Monstre monstre1("monstre1");
         Monstre monstre2("monstre2");
 
-        monstre1.groupAttack();
-        conan.attack(gandalf);
-        conan.attack(gandalf);
-        monstre1.attack(gandalf);
-        gandalf.attack(monstre1);
         cout << "Nombre de joueurs : " << Character::getRegisteredNumber()<<endl;
         cout << "Nombre de monstres : " << Monstre::getRegisteredMonster()<<endl;
-        // cout << "test :"<<gandalf.getOneCharacter()->name<<endl;
-
-
 
         cout << "Gandalf a " << gandalf.getCurrentHp() << " PV" << endl;
-        cout << "monstre1 a " << monstre1.getCurrentHp() << " PV" << endl;
+        cout << "Conan a " << conan.getCurrentHp() << " PV" << endl;
+        cout << "monstre1 a " << monstre1.getCurrentHp() << " PV\n" << endl;
+
         monstre1.groupAttack();
-        cout << "Gandalf a " << gandalf.getCurrentDef() << " DEF" << endl;
+        cout<<"GROUP ATTACK"<<endl;
+        cout << "Gandalf a " << gandalf.getCurrentHp() << " PV" << endl;
+        cout << "Conan a " << conan.getCurrentHp() << " PV" << endl;
+        cout << "monstre1 a " << monstre1.getCurrentHp() << " PV\n" << endl;
+
+        monstre1.attackMonster();
+        cout<<"ATTACK MONSTER"<<endl;
+        cout << "Gandalf a " << gandalf.getCurrentHp() << " PV" << endl;
+        cout << "Conan a " << conan.getCurrentHp() << " PV" << endl;
+        cout << "monstre1 a " << monstre1.getCurrentHp() << " PV\n" << endl;
 
         cout << "monstre1 a " << monstre1.getCurrentDef()<< " defense"<<endl;
         monstre1.upDefense();
-        cout << "monstre1 a " << monstre1.getCurrentDef()<< " defense"<<endl;
+        cout<<"UP DEFENSE"<<endl;
+        cout << "monstre1 a " << monstre1.getCurrentDef() << " defense"<<endl;
+        cout << "monstre2 a " << monstre2.getCurrentDef() << " defense"<<endl;
+
 
         Potion small(3,100);
     
