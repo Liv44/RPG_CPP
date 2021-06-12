@@ -27,12 +27,6 @@ class Character
     string name;
     static vector<Character*> registeredPlayer;
     vector<Character *> getOneCharacter();
-
-    
-
-
-    protected:
-    
     int physicalAttack;
     int magicAttack;
     int defense;
