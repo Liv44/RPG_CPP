@@ -2,6 +2,7 @@
 #define CHARACTER_HPP
 #include "./Potion.hpp"
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -13,13 +14,22 @@ enum Job {
     DruidJob,
     PriestJob,
     PaladinJob,
+    MonstreJob
 };
+
+
 
 class Character
 {
 
+
     public:
     string name;
+    static vector<Character*> registeredPlayer;
+    vector<Character *> getOneCharacter();
+
+    
+
 
     protected:
     
@@ -46,9 +56,14 @@ class Character
     void attack(Character& defender);
 
     int getCurrentHp();
+    int getCurrentDef();
+    static int getRegisteredNumber();
+    void registerPlayer();
 
     public:
     void receiveDamage(int damage);
+
 };
+
 
 #endif
