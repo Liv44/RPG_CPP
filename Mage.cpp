@@ -12,7 +12,6 @@ bool Mage::tryUsingMp(int mp){
     }
     this->mp -= mp;
     return true;
-    Character::registerPlayer();
 }
 
 void Mage::fireball(Character& other){
