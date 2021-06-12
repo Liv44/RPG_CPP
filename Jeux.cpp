@@ -71,13 +71,13 @@ void Jeux::encounter()
     {   
         case 1:
             cout << "Vous avez attaqué le monstre n°1\n" << endl;
-
+            // mage.attack(monster1)
         case 2:
             cout << "Vous avez attaqué le monstre n°2\n" << endl;
-
+            // mage.attack(monster2)
         case 3:
             cout << "Vous avez attaqué le monstre n°3\n" << endl;
-            
+            // mage.attack(monster3)
         case 4:
 
         default:
@@ -89,12 +89,12 @@ void Jeux::encounter()
 
 /////////////////////////////////////////////STATS PERSONNAGE ////////////////////////////////////////////////////////////////////////////////////
 
-void Jeux::statPerso()
+void Jeux::statMage()
 {
     cout << "Statut personnage:\n " << endl;
-    cout << "Name: " << endl;
-    cout << "Class: " << endl;
-    cout << "PV: "<< 100 << " / " <<  1000<< endl;
+    cout << "Name: "<< mageName << endl;
+    cout << "Class: " << Job::MageJob << endl;
+    cout << "PV: "<< Mage::getCurrentHp << " / " << Character(maxHp) << endl;
 }
 
 ///////////////////////////////////////// TOUR ET ATTAQUE DES PERSONNAGES ////////////////////////////////////////////////////////////////////////////////////////////

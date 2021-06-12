@@ -7,6 +7,7 @@
 #include "./Potion.hpp"
 #include "./Exceptions.hpp"
 #include "./Priest.hpp"
+#include "./Monstre.hpp"
 #include "./Jeux.hpp"
 
 
@@ -28,26 +29,37 @@ int main(int argc, char const *argv[])
 
         
         Mage gandalf("Gandalf");
-            Barbarian conan("Conan");
-            // conan.enterFury();
-            conan.attack(gandalf);
+        Barbarian conan("Conan");
+        Monstre monstre1("monstre1");
+        Monstre monstre2("monstre2");
 
-            conan.attack(gandalf);
-            // cout << "Gandalf a " << gandalf.getCurrentHp() << " PV" << endl;
+        monstre1.groupAttack();
+        conan.attack(gandalf);
+        conan.attack(gandalf);
+        monstre1.attack(gandalf);
+        gandalf.attack(monstre1);
+        cout << "Nombre de joueurs : " << Character::getRegisteredNumber()<<endl;
+        cout << "Nombre de monstres : " << Monstre::getRegisteredMonster()<<endl;
+        // cout << "test :"<<gandalf.getOneCharacter()->name<<endl;
 
-            // gandalf.heal(rand()%201 + 200);
 
-            // cout << "Gandalf a " << gandalf.getCurrentHp() << " PV" << endl;
-            
-            // conan.enterFury();
 
-            // Potion small(3,100);
+        cout << "Gandalf a " << gandalf.getCurrentHp() << " PV" << endl;
+        cout << "monstre1 a " << monstre1.getCurrentHp() << " PV" << endl;
+        monstre1.groupAttack();
+        cout << "Gandalf a " << gandalf.getCurrentDef() << " DEF" << endl;
+
+        cout << "monstre1 a " << monstre1.getCurrentDef()<< " defense"<<endl;
+        monstre1.upDefense();
+        cout << "monstre1 a " << monstre1.getCurrentDef()<< " defense"<<endl;
         
-            // gandalf += small;
-            // gandalf += small;
-            // gandalf += small;
-            // gandalf += small;
-            // cout << "All potions were drunk !" << endl;
+        // Potion small(3,100);
+    
+        // gandalf += small;
+        // gandalf += small;
+        // gandalf += small;
+        // gandalf += small;
+        // cout << "All potions were drunk !" << endl;
         
 
         // try {

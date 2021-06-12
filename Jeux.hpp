@@ -16,7 +16,7 @@ public:
     void mageAttaque();
     void priestAttaque();
     void barbarianAttaque();
-    void statPerso();
+    void statMage();
     void encounter();
 
     inline bool getPlaying() const {return this->playing; }
