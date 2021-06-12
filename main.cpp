@@ -14,11 +14,11 @@
 using namespace std;
 
 int main(int argc, char const *argv[])
-{
+{   
     Jeux jeux;
-
-    while (jeux.getPlaying()) {
-
+    
+    try {
+    
         srand(time(NULL));
 
         jeux.intro();
@@ -27,7 +27,6 @@ int main(int argc, char const *argv[])
         jeux.priestAttaque();
         jeux.barbarianAttaque();
 
-        // Barbarian conan("Conan");
         // Monstre monstre1("monstre1");
         // Monstre monstre2("monstre2");
         // Monstre monstre3("monstre3");
@@ -56,22 +55,20 @@ int main(int argc, char const *argv[])
         // gandalf += small;
         // gandalf += small;
         // cout << "All potions were drunk !" << endl;
-        
-
+    }
         // try {
         // // }
         // // catch(IllegalFury& illegalF){
         // //     cout << "An illegal barbarian fury operation occured : " << illegalF.what() << endl;
         // // }
-        // // catch(EmptyPotion& ep){
-        // //     cout << "An illegal barbarian fury operation occured : " << ep.what() << endl;
-        // // }
+        catch(EmptyPotion& ep){
+            cout << "An illegal barbarian fury operation occured : " << ep.what() << endl;
+        }
         // // catch(std::exception& e){
         // //     cout << "An exception occured : " << e.what() << endl;
         // }
 
         cout << "End of combat" << endl;
-    }
 
-    return 0;
+        return 0;
 }

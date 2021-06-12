@@ -1,9 +1,9 @@
 #include "Jeux.hpp"
-#include "./Character.hpp"
-#include "./Barbarian.hpp"
-#include "./Mage.hpp"
-#include "./Priest.hpp"
-#include "./Potion.hpp"
+#include "Character.hpp"
+#include "Barbarian.hpp"
+#include "Mage.hpp"
+#include "Priest.hpp"
+#include "Potion.hpp"
 #include "Monstre.hpp"
 
 Jeux::Jeux()
@@ -26,7 +26,8 @@ void Jeux::intro(){
 
     switch(choix)
     {   
-        case 1:;
+        case 1:
+            playing = true;
         
         case 2:
             playing = false;
@@ -66,27 +67,27 @@ void Jeux::mageAttaque()
     Monstre monstre3("monstre3");
 
     cout << "Attaque : \n" << endl;
-    cout << "1 : Attaque monstre n°1" << "monstre1 a " << monstre1.getCurrentHp() << " PV" << endl;
-    cout << "2 : Attaque monstre n°2" << "monstre2 a " << monstre2.getCurrentHp() << " PV" <<endl;
-    cout << "3 : Attaque monstre n°3" << "monstre3 a " << monstre3.getCurrentHp() << " PV" <<endl;
+    cout << "1 : Attaque monstre n°1 qui a " << monstre1.getCurrentHp() << " PV" << endl;
+    cout << "2 : Attaque monstre n°2 qui a " << monstre2.getCurrentHp() << " PV" <<endl;
+    cout << "3 : Attaque monstre n°3 qui a " << monstre3.getCurrentHp() << " PV" <<endl;
     cout << "4 : Back to menu !" << endl;
     cout << endl << "Choix : ";
     cin >> choix;
 
-    if(choix == 1){
+    if (choix == 1){
         cout << "Vous avez attaqué le monstre n°1\n" << endl;
         mage.attack(monstre1);
-        cout << "monstre1 a " << monstre1.getCurrentHp() << " PV" << endl;
+        cout << "monstre n°1 a " << monstre1.getCurrentHp() << " PV\n" << endl;
 
     } else if (choix == 2) {
         cout << "Vous avez attaqué le monstre n°2\n" << endl;
         mage.attack(monstre2);
-        cout << "monstre2 a " << monstre2.getCurrentHp() << " PV" << endl;
+        cout << "monstre n°2 a " << monstre2.getCurrentHp() << " PV\n" << endl;
 
     } else if (choix == 3) {
         cout << "Vous avez attaqué le monstre n°3\n" << endl;
         mage.attack(monstre3);
-        cout << "monstre3 a " << monstre3.getCurrentHp() << " PV" << endl;
+        cout << "monstre n°3 a " << monstre3.getCurrentHp() << " PV\n" << endl;
 
     } else if (choix == 4){
         Jeux::MageTurn();
@@ -95,6 +96,43 @@ void Jeux::mageAttaque()
         cout << "Choisit un chiffre valable !\n" << endl;
     }
 
+}
+
+void Jeux::priestAttaque(){
+    Priest priest(priestName);
+    Monstre monstre1("monstre1");
+    Monstre monstre2("monstre2");
+    Monstre monstre3("monstre3");
+
+    cout << "Attaque : \n" << endl;
+    cout << "1 : Attaque monstre n°1 qui a " << monstre1.getCurrentHp() << " PV" << endl;
+    cout << "2 : Attaque monstre n°2 qui a " << monstre2.getCurrentHp() << " PV" <<endl;
+    cout << "3 : Attaque monstre n°3 qui a " << monstre3.getCurrentHp() << " PV" <<endl;
+    cout << "4 : Back to menu !" << endl;
+    cout << endl << "Choix : ";
+    cin >> choix;
+
+    if (choix == 1){
+        cout << "Vous avez attaqué le monstre n°1\n" << endl;
+        priest.attack(monstre1);
+        cout << "monstre n°1 a " << monstre1.getCurrentHp() << " PV\n" << endl;
+
+    } else if (choix == 2) {
+        cout << "Vous avez attaqué le monstre n°2\n" << endl;
+        priest.attack(monstre2);
+        cout << "monstre n°2 a " << monstre2.getCurrentHp() << " PV\n" << endl;
+
+    } else if (choix == 3) {
+        cout << "Vous avez attaqué le monstre n°3\n" << endl;
+        priest.attack(monstre3);
+        cout << "monstre n°3 a " << monstre3.getCurrentHp() << " PV\n" << endl;
+
+    } else if (choix == 4){
+        Jeux::priestTurn();
+
+    } else {
+        cout << "Choisit un chiffre valable !\n" << endl;
+    }
 }
 
 /////////////////////////////////////////////STATS PERSONNAGE ////////////////////////////////////////////////////////////////////////////////////
@@ -143,11 +181,13 @@ void Jeux::MageTurn()
     }
 }
 
-void Jeux::priestAttaque()
+void Jeux::priestTurn()
 {
     cout << "PRIEST TURN:\n" << endl;
-    cout << "1 : Attaque -> basic" << endl;
-    cout << "2 : Attaque -> Soin" << endl; // Barbarian -> Furie/ Mage -> Boule de feu / Priest -> Soin
+    cout << "Nombre de joueurs : " << Character::getRegisteredNumber()<<endl;
+    cout << "Nombre de monstres : " << Monstre::getRegisteredMonster()<<endl;
+    cout << "1 : Attaque basic" << endl;
+    cout << "2 : Soin" << endl; // Barbarian -> Furie/ Mage -> Boule de feu / Priest -> Soin
     cout << "3 : Boire une potion" << endl; // Le groupe disposera d'une potion commune au lancement du combat
     cout << "4 : Statut personnage" << endl;
     cout << "5 : Quit game ! " << endl;
@@ -159,13 +199,13 @@ void Jeux::priestAttaque()
     switch(choix)
     {   
         case 1:
-            // Jeux::encounter();
+            Jeux::priestAttaque();
         case 2:
-            // Jeux::encounter();
+            Jeux::priestAttaque();
         case 3:
             // Potion small(1,300);
         case 4: 
-            Jeux::statMage();
+            Jeux::statPriest();
         case 5:
             playing = false;
             break;

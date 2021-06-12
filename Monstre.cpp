@@ -8,7 +8,7 @@ void Monstre::registerMonster(){
         Monstre::registeredMonster.push_back(this);
 };
 
-Monstre::Monstre(string name) : Character(name,Job::MonstreJob,1000,40,15,300) {
+Monstre::Monstre(string name) : Character(name,Job::MonstreJob,400,40,125,700) {
     Monstre::registerMonster();
 }
 

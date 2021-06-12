@@ -37,8 +37,6 @@ public:
     void barbarianTurn();
     void monstre3Turn();
 
-    inline bool getPlaying() const {return this->playing; }
-
     string mageName;
     string priestName;
     string barbarianName;
