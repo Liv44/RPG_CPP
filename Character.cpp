@@ -125,11 +125,13 @@ void Character::playerTurn(){
             break;
         case 2:
             cout <<"Attaque spéciale !!!!"<<endl;
+            // Créer l'attaque spéciale !!!
             break;
         case 3:
             // Potion small(1,300);
         case 4:
             this->statCharacter();
+            this->playerTurn();
             break;
         case 5:
             // Jeux::playing = false;

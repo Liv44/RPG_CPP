@@ -25,21 +25,21 @@ int main(int argc, char const *argv[])
         Monstre monstre1("monstre1");
         Monstre monstre2("monstre2");
         Monstre monstre3("monstre3");
-        string mageName;
-        string priestName;
-        string barbarianName;
-        cout << "Entrer le nom de votre Mage: " << endl;
-        cin >> mageName;
-        cout << "Le nom de votre mage est " << mageName<< endl;
+        string mageName = "Olivia";
+        string priestName = "Pierric";
+        string barbarianName = "Luke";
+        // cout << "Entrer le nom de votre Mage: " << endl;
+        // cin >> mageName;
+        // cout << "Le nom de votre mage est " << mageName<< endl;
 
-        cout << "\nEntrer le nom de votre Prètre: " << endl;
-        cin >> priestName;
-        cout << "Le nom de votre prètre est " << priestName << endl;
+        // cout << "\nEntrer le nom de votre Prètre: " << endl;
+        // cin >> priestName;
+        // cout << "Le nom de votre prètre est " << priestName << endl;
 
 
-        cout << "\nEntrer le nom de votre Barbarian: " << endl;
-        cin >> barbarianName;
-        cout << "Le nom de votre barbarian est " << barbarianName << "\n" << endl;
+        // cout << "\nEntrer le nom de votre Barbarian: " << endl;
+        // cin >> barbarianName;
+        // cout << "Le nom de votre barbarian est " << barbarianName << "\n" << endl;
 
         Mage mage(mageName);
         Barbarian barbarian(barbarianName);

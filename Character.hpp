@@ -61,6 +61,7 @@ class Character
     public:
     void receiveDamage(int damage);
 
+    // Créer l'attaque spéciale !!!
 };
 
 
