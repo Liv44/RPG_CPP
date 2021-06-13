@@ -33,7 +33,7 @@ public:
 
     // Tour dans l'ordre
     void monstreTurn(Monstre& oneMonstre);
-
+    void howsTurn();
     // Mage mage;
     // Priest priest;
     // Barbarian barbarian;

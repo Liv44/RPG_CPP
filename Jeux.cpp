@@ -5,14 +5,22 @@
 #include "Priest.hpp"
 #include "Potion.hpp"
 #include "Monstre.hpp"
+#include "iostream"
 
-Jeux::Jeux(){
+using namespace std;
+
+Jeux::Jeux()
+{
     choix = 0;
     playing = true;
-    
 }
 
-
+Monstre monstre1("monstre1");
+Monstre monstre2("monstre2");
+Monstre monstre3("monstre3");
+Barbarian barbare("barbare");
+Mage mage("mage");
+Priest priest("pretre");
 
 ////////////////////////////////////////////////// INTRO /////////////////////////////////////////////////////////////////////////////////////////
 void Jeux::intro(){
@@ -41,19 +49,32 @@ void Jeux::intro(){
 }  
 
 ///////////////////////////////////////////// NOM PERSONNAGE ////////////////////////////////////////////////////////////////////////////////////
+void Jeux::namePerso(){
+    cout << "Entrer le nom de votre Mage: " << endl;
+    cin >> mageName;
+    cout << "Le nom de votre mage est " << mageName<< endl;
+    Mage mage(mageName);
 
-Mage mage("test");
-Priest priest("test");
-Barbarian barbarian("test");
-Monstre monstre1("monstre1");
-Monstre monstre2("monstre2");
-Monstre monstre3("monstre3");
+    cout << "\nEntrer le nom de votre Prètre: " << endl;
+    cin >> priestName;
+    cout << "Le nom de votre prètre est " << priestName << endl;
+    Priest priest(priestName);
 
+    cout << "\nEntrer le nom de votre Barbarian: " << endl;
+    cin >> barbarianName;
+    cout << "Le nom de votre barbarian est " << barbarianName << "\n" << endl;
+    Barbarian barbarian(barbarianName);
 
+}
 /////////////////////////////////// PERSONNAGE VS MONSTRE /////////////////////////////////////////////////////////////////////////////////////
 
 void Jeux::mageAttaque()
-{
+{   
+    Mage mage(mageName);
+    Monstre monstre1("monstre1");
+    Monstre monstre2("monstre2");
+    Monstre monstre3("monstre3");
+
     cout << "Attaque : \n" << endl;
     cout << "1 : Attaque monstre n°1 qui a " << monstre1.getCurrentHp() << " PV" << endl;
     cout << "2 : Attaque monstre n°2 qui a " << monstre2.getCurrentHp() << " PV" <<endl;
@@ -87,6 +108,11 @@ void Jeux::mageAttaque()
 }
 
 void Jeux::priestAttaque(){
+    Priest priest(priestName);
+    Monstre monstre1("monstre1");
+    Monstre monstre2("monstre2");
+    Monstre monstre3("monstre3");
+
     cout << "Attaque : \n" << endl;
     cout << "1 : Attaque monstre n°1 qui a " << monstre1.getCurrentHp() << " PV" << endl;
     cout << "2 : Attaque monstre n°2 qui a " << monstre2.getCurrentHp() << " PV" <<endl;
@@ -119,11 +145,27 @@ void Jeux::priestAttaque(){
 }
 
 /////////////////////////////////////////////STATS PERSONNAGE ////////////////////////////////////////////////////////////////////////////////////
-void Jeux::statCharacters(Character& oneCharacter){
-    cout << "Statut du personnage : "<< oneCharacter.name<<endl;
-    cout<< "Classe : "<<oneCharacter.job<<endl;
-    cout<< "PV :"<< oneCharacter.getCurrentHp()<<endl;
-}
 
 ///////////////////////////////////////// TOUR ET ATTAQUE DES PERSONNAGES ////////////////////////////////////////////////////////////////////////////////////////////
-
+void Jeux::howsTurn() 
+{
+    vector<int> tabSpeed;
+    tabSpeed.push_back(barbare.speed);
+    tabSpeed.push_back(mage.speed);
+    tabSpeed.push_back(priest.speed);
+    tabSpeed.push_back(monstre1.speed);
+    tabSpeed.push_back(monstre2.speed);
+    tabSpeed.push_back(monstre3.speed);
+    int i;
+    int save;
+    while (i != tabSpeed.size() -1) {
+        if (tabSpeed[i] > tabSpeed[i+1]) {
+            save = tabSpeed[i];
+            tabSpeed[i] = tabSpeed[i + 1];
+            tabSpeed[i+1] = save;
+        } else {
+            i++;
+        }
+        cout<< tabSpeed[i] <<endl;
+    }
+}

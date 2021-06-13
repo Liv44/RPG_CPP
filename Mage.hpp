@@ -13,6 +13,7 @@ class Mage : public Character {
     bool tryUsingMp(int mp);
 
     public:
+    int speed = 5;
     Mage(string name);
     void fireball(Character& other);
 };

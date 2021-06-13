@@ -6,19 +6,20 @@
 
 using namespace std;
 
+
 class Monstre : public Character {
-    
     void registerMonster();
     Monstre * getOneMonster();
     int dividedAttack;
     int attackNotChanged;
 
     public:
-    static vector<Monstre*> registeredMonster;
+    static vector<Monstre*> registeredMonsters;
+    int speed = rand() % 20;
     Monstre(string name);
     void groupAttack();
     void upDefense();
-    static int getRegisteredMonster();
+    static int getNumberMonsters();
     void attackMonster();
     void monstreTurn();
 
