@@ -128,8 +128,9 @@ void Character::playerTurn(){
             cout <<"Attaque spéciale !!!!"<<endl;
             break;
         case 3:
-            // Potion small(1,300);
-            // Character::Character += small;
+            Potion small(1,100);
+            *this += small;
+            break;
         case 4:
             this->statCharacter();
             break;

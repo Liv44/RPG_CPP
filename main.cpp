@@ -28,6 +28,7 @@ int main(int argc, char const *argv[])
         string mageName;
         string priestName;
         string barbarianName;
+        
         cout << "Entrer le nom de votre Mage: " << endl;
         cin >> mageName;
         cout << "Le nom de votre mage est " << mageName<< endl;
@@ -44,6 +45,7 @@ int main(int argc, char const *argv[])
         Mage mage(mageName);
         Barbarian barbarian(barbarianName);
         Priest priest(priestName);
+
         mage.statCharacter();
         barbarian.statCharacter();
         priest.statCharacter();
@@ -76,13 +78,7 @@ int main(int argc, char const *argv[])
         // cout << "monstre1 a " << monstre1.getCurrentDef()<< " defense"<<endl;
         // monstre1.upDefense();
         // cout << "monstre1 a " << monstre1.getCurrentDef()<< " defense"<<endl;
-        
-        // Potion small(3,100);
-    
-        // gandalf += small;
-        // gandalf += small;
-        // gandalf += small;
-        // gandalf += small;
+
         // cout << "All potions were drunk !" << endl;
     }
         // try {
