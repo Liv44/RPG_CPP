@@ -9,10 +9,10 @@
 
 using namespace std;
 
-Jeux::Jeux()
-{
+Jeux::Jeux(){
     choix = 0;
     playing = true;
+    
 }
 
 Monstre monstre1("monstre1");
@@ -54,24 +54,30 @@ void Jeux::namePerso(){
     cout << "Entrer le nom de votre Mage: " << endl;
     cin >> mageName;
     cout << "Le nom de votre mage est " << mageName<< endl;
-    Mage mage(mageName);
 
     cout << "\nEntrer le nom de votre Prètre: " << endl;
     cin >> priestName;
     cout << "Le nom de votre prètre est " << priestName << endl;
-    Priest priest(priestName);
+
 
     cout << "\nEntrer le nom de votre Barbarian: " << endl;
     cin >> barbarianName;
     cout << "Le nom de votre barbarian est " << barbarianName << "\n" << endl;
-    Barbarian barbarian(barbarianName);
 
 }
+
+Mage mage(Jeux::mageName);
+Priest priest(Jeux::priestName);
+Barbarian barbarian(Jeux::barbarianName);
+Monstre monstre1("monstre1");
+Monstre monstre2("monstre2");
+Monstre monstre3("monstre3");
+
+
 /////////////////////////////////// PERSONNAGE VS MONSTRE /////////////////////////////////////////////////////////////////////////////////////
 
 void Jeux::mageAttaque()
 {   
-    Mage mage(mageName);
     Monstre monstre1("monstre1");
     Monstre monstre2("monstre2");
     Monstre monstre3("monstre3");
@@ -109,11 +115,6 @@ void Jeux::mageAttaque()
 }
 
 void Jeux::priestAttaque(){
-    Priest priest(priestName);
-    Monstre monstre1("monstre1");
-    Monstre monstre2("monstre2");
-    Monstre monstre3("monstre3");
-
     cout << "Attaque : \n" << endl;
     cout << "1 : Attaque monstre n°1 qui a " << monstre1.getCurrentHp() << " PV" << endl;
     cout << "2 : Attaque monstre n°2 qui a " << monstre2.getCurrentHp() << " PV" <<endl;
@@ -146,16 +147,42 @@ void Jeux::priestAttaque(){
 }
 
 /////////////////////////////////////////////STATS PERSONNAGE ////////////////////////////////////////////////////////////////////////////////////
-
-void Jeux::statMage()
-{
-    cout << "Statut personnage:\n " << endl;
-    cout << "Name: "<< mageName << endl;
-    cout << "Class: " << Job::MageJob << endl;
-    cout << "PV: "<< "" << " / " << "" << endl;
+void Jeux::statCharacters(Character& oneCharacter){
+    cout << "Statut du personnage : "<< oneCharacter.name<<endl;
+    cout<< "Classe : "<<oneCharacter.job<<endl;
+    cout<< "PV :"<< oneCharacter.getCurrentHp()<<endl;
 }
 
 ///////////////////////////////////////// TOUR ET ATTAQUE DES PERSONNAGES ////////////////////////////////////////////////////////////////////////////////////////////
+
+void Jeux::monstreTurn(Monstre& oneMonstre){
+    int randomAction = rand()%3;
+    switch(randomAction) {
+        case 0:
+        oneMonstre.groupAttack();
+        case 1:
+        oneMonstre.upDefense();
+        case 2:
+        oneMonstre.attackMonster();
+    }
+}
+
+void Jeux::yourTurn(){
+    cout << "C'est ton tour. Qui veux-tu faire jouer ? "<< endl;
+    cout << "1 - Barbarian" << endl;
+    cout << "2 - Priest" << endl;
+    cout << "3 - Mage" << endl;
+    cin >> choix;
+
+    switch (choix){
+        case 1:
+        cout<<"Tu as choisi le Barbarian"<<endl;
+        case 2:
+        cout<<"Tu as choisi le Priest"<<endl;
+        case 3:
+        cout<<"Tu as choisi le Mage"<<endl;
+    }
+}
 
 void Jeux::MageTurn()
 {
@@ -181,7 +208,7 @@ void Jeux::MageTurn()
         case 3:
             // Potion small(1,300);
         case 4: 
-            Jeux::statMage();
+            // Jeux::statCharacters();
         case 5:
             playing = false;
             break;
@@ -247,7 +274,7 @@ void Jeux::barbarianAttaque()
         case 3:
             // Potion small(1,300);
         case 4: 
-            Jeux::statMage();
+            // Jeux::statMage();
         case 5:
             playing = false;
             break;

@@ -69,7 +69,7 @@ void Character::receiveDamage(int damage){
     }
 }
 
-vector<Character *> Character::getOneCharacter(){
+vector<Character *> Character::getAllCharacters(){
     vector<Character *> allCharacters;
     for (int i = 0; i < (Character::registeredPlayer.size()); i++){
         allCharacters.push_back(Character::registeredPlayer[i]);
@@ -77,4 +77,11 @@ vector<Character *> Character::getOneCharacter(){
     return allCharacters;
     // return [Character::registeredPlayer0];
     // parcourir tout le tableau ? retourner un vector 
+}
+
+
+void Character::statCharacter(){
+    cout << "Statut du personnage : "<< name<<endl;
+    cout<< "Classe : "<<job<<endl;
+    cout<< "PV :"<< this->getCurrentHp()<<endl;
 }
