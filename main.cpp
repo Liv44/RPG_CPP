@@ -36,6 +36,7 @@ int main(int argc, char const *argv[])
         mage.statCharacter();
         barbarian.statCharacter();
         priest.statCharacter();
+        int end = 1;
 
         do{
             vector <Character *> allCharactersSorted = Jeux::howsTurn();
@@ -46,17 +47,20 @@ int main(int argc, char const *argv[])
             cout<< "."<<endl;
 
         for (int i = 0; i < allCharactersSorted.size(); i++){
-            if (allCharactersSorted[i]->getCurrentHp()>0){
-                allCharactersSorted[i]->playerTurn();
-            }
             if (Monstre::registeredMonsters.size()==0){
                 cout << "Bravo! Vous avez vaincu les monstres !" << endl;
+                end = 0;
                 break;
             } else if (Character::registeredPlayers.size()==0){
                 cout<< "Dommage, vous avez perdu."<<endl;
+                end = 0;
+                break;
+            } else {
+                allCharactersSorted[i]->playerTurn();
             }
+            
         };
-        } while (Character::registeredPlayers.size()==0 || Monstre::registeredMonsters.size()!=0) ;
+        } while (end != 0) ;
     }
         catch(EmptyPotion& ep){
             cout << "An illegal barbarian fury operation occured : " << ep.what() << endl;
