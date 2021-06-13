@@ -11,15 +11,31 @@ class Jeux
 public:
     Jeux();
 
+    // Intro
     void intro();
-    void namePerso();
-    void mageAttaque();
-    void priestAttaque();
-    void barbarianAttaque();
-    void statPerso();
-    void encounter();
 
-    inline bool getPlaying() const {return this->playing; }
+    // Choix nom des personnages
+    void namePerso();
+
+    // Attaque et stats Mage
+    void mageAttaque();
+    void statMage();
+
+    // Attaque et stats Prètre
+    void priestAttaque();
+    void statPriest();
+
+    // Attaque et stats Prètre
+    void barbarianAttaque();
+    void statBarbarian();
+
+    // Tour dans l'ordre
+    void MageTurn();
+    void monstre1Turn();
+    void priestTurn();
+    void monstre2Turn();
+    void barbarianTurn();
+    void monstre3Turn();
 
     string mageName;
     string priestName;
@@ -28,7 +44,6 @@ public:
 private:
     int choix;
     bool playing;
-    // Encounter 
 };
 
 #endif

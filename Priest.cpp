@@ -1,4 +1,4 @@
-#include "./Priest.hpp"
+#include "Priest.hpp"
 
 bool Priest::tryUsingMp(int mp){
     if(this->mp < mp){
@@ -14,5 +14,5 @@ void Priest::healAllie(Character& other){
             return;
     }
     // int randomHeal = rand() % 200 + 201;
-    other.heal(rand()%201 + 200);
-}
+    other.heal(rand()%200 + 201);
+} 
