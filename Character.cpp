@@ -1,5 +1,8 @@
 #include "./Character.hpp"
 #include <vector>
+#include "./Jeux.hpp"
+#include "./Monstre.hpp"
+
 
 vector<Character*> Character::registeredPlayer;
 
@@ -75,13 +78,64 @@ vector<Character *> Character::getAllCharacters(){
         allCharacters.push_back(Character::registeredPlayer[i]);
     }
     return allCharacters;
-    // return [Character::registeredPlayer0];
-    // parcourir tout le tableau ? retourner un vector 
 }
 
 
 void Character::statCharacter(){
-    cout << "Statut du personnage : "<< name<<endl;
-    cout<< "Classe : "<<job<<endl;
+    cout << "Statut du personnage : "<< this->name<<endl;
+    string jobName;
+    switch(this->job){
+        case 0 : jobName = "Freelancer"; break;
+        case 1 : jobName = "Mage"; break;
+        case 2 : jobName = "Warrior"; break;
+        case 3 : jobName = "Barbarian"; break;
+        case 4 : jobName = "Druid"; break;
+        case 5 : jobName = "Priest"; break;
+        case 6 : jobName = "Paladin"; break;
+        case 7 : jobName = "Monstre";
+    }
+    cout<< "Classe : "<<jobName<<endl;
     cout<< "PV :"<< this->getCurrentHp()<<endl;
+}
+
+void Character::playerTurn(){
+    int choix;
+    cout << "C'est au tour de "<<this->name<<" de jouer"<<endl;
+    cout << "Il reste "<<Monstre::getRegisteredMonster()<<" montres"<<endl;
+    cout << "1 : Attaque basic" << endl;
+    cout << "2 : Attaque spéciale" << endl; // Barbarian -> Furie/ Mage -> Boule de feu / Priest -> Soin
+    cout << "3 : Boire une potion" << endl; // Le groupe disposera d'une potion commune au lancement du combat
+    cout << "4 : Statut du personnage" << endl;
+    cout << "5 : Quit game ! " << endl;
+
+    cout << endl << "Choix : ";
+    cin >> choix;
+    cout << "\n" << endl;
+
+    switch(choix)
+    {   
+        case 1:
+            int choix;
+            cout<< "Qui voulez-vous attaquer ?"<<endl;
+            for (int i = 0; i < Monstre::registeredMonster.size(); i++){
+                cout<< i+1 << Monstre::registeredMonster[i]->name<<i+1<< "a "<<Monstre::registeredMonster[i]->getCurrentHp()<<"PV"<<endl;
+                };
+            cin >> choix;
+            this->attack(*(Monstre::registeredMonster[choix-1]));
+            break;
+        case 2:
+            cout <<"Attaque spéciale !!!!"<<endl;
+            break;
+        case 3:
+            // Potion small(1,300);
+        case 4:
+            this->statCharacter();
+            break;
+        case 5:
+            // Jeux::playing = false;
+            break;
+        default:
+            break;
+
+    }
 }
