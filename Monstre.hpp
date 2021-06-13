@@ -7,7 +7,6 @@
 using namespace std;
 
 class Monstre : public Character {
-    static vector<Monstre*> registeredMonster;
     
     void registerMonster();
     Monstre * getOneMonster();
@@ -15,11 +14,13 @@ class Monstre : public Character {
     int attackNotChanged;
 
     public:
+    static vector<Monstre*> registeredMonster;
     Monstre(string name);
     void groupAttack();
     void upDefense();
     static int getRegisteredMonster();
     void attackMonster();
+    void monstreTurn();
 
 };
 

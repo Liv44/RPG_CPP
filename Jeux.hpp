@@ -32,23 +32,21 @@ public:
     void barbarianAttaque();
 
     // Tour dans l'ordre
-    void MageTurn();
     void monstreTurn(Monstre& oneMonstre);
-    void yourTurn();
-    void priestTurn();
-    void barbarianTurn();
 
     // Mage mage;
     // Priest priest;
     // Barbarian barbarian;
 
-    static string mageName;
-    static string priestName;
-    static string barbarianName;
+    string mageName;
+    string priestName;
+    string barbarianName;
+    
+    public:
+    bool playing;
 
 private:
     int choix;
-    bool playing;
 };
 
 #endif
