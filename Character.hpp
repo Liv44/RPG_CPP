@@ -3,6 +3,8 @@
 #include "./Potion.hpp"
 #include <string>
 #include <vector>
+#include <iostream>
+
 
 using namespace std;
 
@@ -26,14 +28,14 @@ class Character
     public:
     string name;
     static vector<Character*> registeredPlayer;
-    vector<Character *> getOneCharacter();
+    vector<Character *> getAllCharacters();
     int physicalAttack;
     int magicAttack;
     int defense;
     int maxHp;
     int hp;
 
-    private:
+    public:
     Job job;
 
     public:
@@ -53,6 +55,7 @@ class Character
     int getCurrentDef();
     static int getRegisteredNumber();
     void registerPlayer();
+    void statCharacter();
 
     public:
     void receiveDamage(int damage);

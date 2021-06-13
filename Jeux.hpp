@@ -3,6 +3,9 @@
 #include <iostream>
 #include <ostream>
 #include <iterator>
+#include "Character.hpp"
+#include "Monstre.hpp"
+
 
 using namespace std;
 
@@ -17,29 +20,31 @@ public:
     // Choix nom des personnages
     void namePerso();
 
+    //Stat des persos
+    void statCharacters(Character& oneCharacter);
     // Attaque et stats Mage
     void mageAttaque();
-    void statMage();
 
     // Attaque et stats Prètre
     void priestAttaque();
-    void statPriest();
 
     // Attaque et stats Prètre
     void barbarianAttaque();
-    void statBarbarian();
 
     // Tour dans l'ordre
     void MageTurn();
-    void monstre1Turn();
+    void monstreTurn(Monstre& oneMonstre);
+    void yourTurn();
     void priestTurn();
-    void monstre2Turn();
     void barbarianTurn();
-    void monstre3Turn();
 
-    string mageName;
-    string priestName;
-    string barbarianName;
+    // Mage mage;
+    // Priest priest;
+    // Barbarian barbarian;
+
+    static string mageName;
+    static string priestName;
+    static string barbarianName;
 
 private:
     int choix;

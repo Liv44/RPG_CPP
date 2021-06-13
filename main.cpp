@@ -23,13 +23,19 @@ int main(int argc, char const *argv[])
 
         jeux.intro();
         jeux.namePerso();
-        jeux.MageTurn();
-        jeux.priestAttaque();
-        jeux.barbarianAttaque();
 
-        // Monstre monstre1("monstre1");
-        // Monstre monstre2("monstre2");
-        // Monstre monstre3("monstre3");
+        Monstre monstre1("monstre1");
+        Monstre monstre2("monstre2");
+        Monstre monstre3("monstre3");
+
+        monstre3.statCharacter();
+
+        jeux.yourTurn();
+        // jeux.MageTurn();
+        // jeux.priestAttaque();
+        // jeux.barbarianAttaque();
+
+        
 
         // monstre1.groupAttack();
         // monstre1.attack(gandalf);

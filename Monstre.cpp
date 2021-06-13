@@ -1,6 +1,7 @@
 #include "./Monstre.hpp"
 #include <string>
 #include <cstdlib>
+#include <iostream>
 #include <ctime>
 
 vector<Monstre*> Monstre::registeredMonster;
@@ -16,6 +17,7 @@ Monstre::Monstre(string name) : Character(name,Job::MonstreJob,800,40,15,300) {
 }
 
 void Monstre::groupAttack(){
+    cout << "MAGE TURN:\n" << endl;
     this->physicalAttack=physicalAttack / getRegisteredNumber();
     vector <Character *> allCharacters = Character::getOneCharacter();
     for (int i = 0; i < (allCharacters.size()); i++){
