@@ -1,5 +1,8 @@
 #include "./Monstre.hpp"
 #include <string>
+#include <cstdlib>
+#include <iostream>
+#include <ctime>
 
 vector<Monstre*> Monstre::registeredMonster;
 
@@ -8,12 +11,19 @@ void Monstre::registerMonster(){
         Monstre::registeredMonster.push_back(this);
 };
 
-Monstre::Monstre(string name) : Character(name,Job::MonstreJob,400,40,125,700) {
+Monstre::Monstre(string name) : Character(name,Job::MonstreJob,800,40,15,300) {
     Monstre::registerMonster();
+    attackNotChanged = physicalAttack;
 }
 
 void Monstre::groupAttack(){
-    this->defense = 0;
+    cout << "MAGE TURN:\n" << endl;
+    this->physicalAttack=physicalAttack / getRegisteredNumber();
+    vector <Character *> allCharacters = Character::getOneCharacter();
+    for (int i = 0; i < (allCharacters.size()); i++){
+        Monstre::attack(*allCharacters[i]);
+    }
+    this->physicalAttack=attackNotChanged;
 }
 
 void Monstre::upDefense(){
@@ -22,15 +32,22 @@ void Monstre::upDefense(){
 }
 
 int Monstre::getRegisteredMonster(){
-    Monstre::registeredMonster[0];
     return Monstre::registeredMonster.size();
 }
 
 Monstre *  Monstre::getOneMonster(){
-    return Monstre::registeredMonster[0];
-    // On peut récupérer le premier monstre. 
+    //mettre un random pour le monstre.
+    srand(time(NULL));
+    int randomMonster = rand()%getRegisteredMonster();
+    return Monstre::registeredMonster[randomMonster];
+}
+
+void Monstre::attackMonster(){
+    vector <Character *> allCharacters = Character::getOneCharacter();
+    int randomCharacter = rand()%getRegisteredNumber();
+    Monstre::attack(*allCharacters[randomCharacter]);
 }
 // Mettre en place 3 actions : 
 // Attaque normale sur une cible aléatoire 
-// Attaque de groupe
-// Augmentation de la défense
+// Attaque de groupe OK
+// Augmentation de la défense OK

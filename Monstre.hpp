@@ -11,13 +11,15 @@ class Monstre : public Character {
     
     void registerMonster();
     Monstre * getOneMonster();
+    int dividedAttack;
+    int attackNotChanged;
 
     public:
     Monstre(string name);
     void groupAttack();
     void upDefense();
     static int getRegisteredMonster();
-
+    void attackMonster();
 
 };
 
