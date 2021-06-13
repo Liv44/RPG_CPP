@@ -128,5 +128,4 @@ int main(int argc, char const *argv[])
         cout << "End of combat" << endl;
 
         return 0;
->>>>>>> origin/develop
 }
