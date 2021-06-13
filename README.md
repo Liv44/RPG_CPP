@@ -58,6 +58,3 @@ Cette commande va donc lancer notre programme et le tour est joué !
 Voici une petite vidéo sur **"Comment compiler et lancer le programme ?"**
 
 https://user-images.githubusercontent.com/71589052/121819457-762c4580-cc8d-11eb-857c-78d7018afff1.mp4
-
-
-
