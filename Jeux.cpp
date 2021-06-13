@@ -5,12 +5,22 @@
 #include "Priest.hpp"
 #include "Potion.hpp"
 #include "Monstre.hpp"
+#include "iostream"
+
+using namespace std;
 
 Jeux::Jeux()
 {
     choix = 0;
     playing = true;
 }
+
+Monstre monstre1("monstre1");
+Monstre monstre2("monstre2");
+Monstre monstre3("monstre3");
+Barbarian barbare("barbare");
+Mage mage("mage");
+Priest priest("pretre");
 
 ////////////////////////////////////////////////// INTRO /////////////////////////////////////////////////////////////////////////////////////////
 void Jeux::intro(){
@@ -249,23 +259,23 @@ void Jeux::barbarianAttaque()
 
 void Jeux::howsTurn() 
 {
-    Monstre monstre1("monstre1");
-    Monstre monstre2("monstre2");
-    Monstre monstre3("monstre3");
-    Barbarian barbare("barbare");
-    Mage mage("mage");
-    Priest priest("pretre");
     vector<int> tabSpeed;
-    int VM1 = monstre1.speed;
-    int VM2 = monstre2.speed;
-    int VM3 = monstre3.speed;
-    int index;
-
-    if (VM1 > VM2 || VM1 > VM3) {
-        index = 1;
-    } else if (VM2 > VM1 || VM2 > VM3)
-    {
-        index = 2;
+    tabSpeed.push_back(barbare.speed);
+    tabSpeed.push_back(mage.speed);
+    tabSpeed.push_back(priest.speed);
+    tabSpeed.push_back(monstre1.speed);
+    tabSpeed.push_back(monstre2.speed);
+    tabSpeed.push_back(monstre3.speed);
+    int i;
+    int save;
+    while (i != tabSpeed.size() -1) {
+        if (tabSpeed[i] > tabSpeed[i+1]) {
+            save = tabSpeed[i];
+            tabSpeed[i] = tabSpeed[i + 1];
+            tabSpeed[i+1] = save;
+        } else {
+            i++;
+        }
+        cout<< tabSpeed[i] <<endl;
     }
-    
 }
