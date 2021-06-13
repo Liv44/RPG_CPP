@@ -16,6 +16,7 @@ using namespace std;
 int main(int argc, char const *argv[])
 {   
     Jeux jeux;
+    vector<int> turn = jeux.howsTurn();
     
     try {
     
