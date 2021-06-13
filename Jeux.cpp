@@ -205,7 +205,7 @@ void Jeux::priestTurn()
         case 3:
             // Potion small(1,300);
         case 4: 
-            Jeux::statPriest();
+            // Jeux::statPriest();
         case 5:
             playing = false;
             break;
@@ -245,4 +245,27 @@ void Jeux::barbarianAttaque()
             break;
 
     }
+}
+
+void Jeux::howsTurn() 
+{
+    Monstre monstre1("monstre1");
+    Monstre monstre2("monstre2");
+    Monstre monstre3("monstre3");
+    Barbarian barbare("barbare");
+    Mage mage("mage");
+    Priest priest("pretre");
+    vector<int> tabSpeed;
+    int VM1 = monstre1.speed;
+    int VM2 = monstre2.speed;
+    int VM3 = monstre3.speed;
+    int index;
+
+    if (VM1 > VM2 || VM1 > VM3) {
+        index = 1;
+    } else if (VM2 > VM1 || VM2 > VM3)
+    {
+        index = 2;
+    }
+    
 }

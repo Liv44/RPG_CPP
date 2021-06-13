@@ -37,6 +37,8 @@ public:
     void barbarianTurn();
     void monstre3Turn();
 
+    void howsTurn();
+
     string mageName;
     string priestName;
     string barbarianName;

@@ -23,9 +23,9 @@ int main(int argc, char const *argv[])
 
         jeux.intro();
         jeux.namePerso();
-        jeux.MageTurn();
-        jeux.priestAttaque();
         jeux.barbarianAttaque();
+        jeux.priestAttaque();
+        jeux.MageTurn();
 
         // Monstre monstre1("monstre1");
         // Monstre monstre2("monstre2");
