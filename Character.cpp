@@ -2,6 +2,7 @@
 #include <vector>
 #include "./Jeux.hpp"
 #include "./Monstre.hpp"
+#include "./Potion.hpp"
 
 
 vector<Character*> Character::registeredPlayer;
@@ -128,6 +129,7 @@ void Character::playerTurn(){
             break;
         case 3:
             // Potion small(1,300);
+            // Character::Character += small;
         case 4:
             this->statCharacter();
             break;

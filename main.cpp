@@ -23,7 +23,7 @@ int main(int argc, char const *argv[])
 
         jeux.intro();
         Monstre monstre1("monstre1");
-        Monstre monstre2("monstre2");
+        Monstre monstre2("monstre2");   
         Monstre monstre3("monstre3");
         string mageName;
         string priestName;

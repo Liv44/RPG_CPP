@@ -12,8 +12,6 @@ Jeux::Jeux(){
     
 }
 
-
-
 ////////////////////////////////////////////////// INTRO /////////////////////////////////////////////////////////////////////////////////////////
 void Jeux::intro(){
     cout << "Ah vous voilà enfin ! Bienvenue sur notre jeu RPG\n" << endl; 
@@ -30,6 +28,7 @@ void Jeux::intro(){
     {   
         case 1:
             playing = true;
+            break;
         
         case 2:
             playing = false;
