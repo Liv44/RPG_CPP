@@ -6,44 +6,67 @@
 #include "./Mage.hpp"
 #include "./Potion.hpp"
 #include "./Exceptions.hpp"
+#include "./Priest.hpp"
+#include "./Monstre.hpp"
+#include "./Jeux.hpp"
 
 
 using namespace std;
 
 int main(int argc, char const *argv[])
-{
-    try {
-        srand(time(NULL));
-        Mage gandalf("Gandalf");
-        Barbarian conan("Conan");
-        conan.enterFury();
-        conan.attack(gandalf);
-
-        conan.attack(gandalf);
-        cout << "Gandalf a " << gandalf.getCurrentHp() << " PV" << endl;
-        conan.enterFury();
-
-        Potion small(3,100);
+{   
+    Jeux jeux;
     
-        gandalf += small;
-        gandalf += small;
-        gandalf += small;
-        gandalf += small;
-        cout << "All potions were drunk !" << endl;
-    }
-    catch(IllegalFury& illegalF){
-        cout << "An illegal barbarian fury operation occured : " << illegalF.what() << endl;
-    }
-    catch(EmptyPotion& ep){
-        cout << "An illegal barbarian fury operation occured : " << ep.what() << endl;
-    }
-    catch(std::exception& e){
-        cout << "An exception occured : " << e.what() << endl;
-    }
+    try {
+    
+        srand(time(NULL));
 
-    cout << "End of combat" << endl;
+        jeux.intro();
+        Monstre monstre1("monstre1");
+        Monstre monstre2("monstre2");
+        Monstre monstre3("monstre3");
+        string mageName = "Le Mage";
+        string priestName = "Le Prêtre";
+        string barbarianName = "Le Barbare";
 
 
+        Mage mage(mageName);
+        Barbarian barbarian(barbarianName);
+        Priest priest(priestName);
+        mage.statCharacter();
+        barbarian.statCharacter();
+        priest.statCharacter();
+        int end = 1;
 
-    return 0;
+        do{
+            vector <Character *> allCharactersSorted = Jeux::howsTurn();
+            cout << "NOUVEAU TOUR DE JEU !!! \nVoici l'ordre de ce tour : ";
+            for (int i = 0; i < allCharactersSorted.size(); i++){
+                cout << allCharactersSorted[i]->name<<" ";
+            }
+            cout<< "."<<endl;
+
+        for (int i = 0; i < allCharactersSorted.size(); i++){
+            if (Monstre::registeredMonsters.size()==0){
+                cout << "Bravo! Vous avez vaincu les monstres !" << endl;
+                end = 0;
+                break;
+            } else if (Character::registeredPlayers.size()==0){
+                cout<< "Dommage, vous avez perdu."<<endl;
+                end = 0;
+                break;
+            } else {
+                allCharactersSorted[i]->playerTurn();
+            }
+            
+        };
+        } while (end != 0) ;
+    }
+        catch(EmptyPotion& ep){
+            cout << "An illegal barbarian fury operation occured : " << ep.what() << endl;
+        }
+
+        cout << "End of combat" << endl;
+
+        return 0;
 }
