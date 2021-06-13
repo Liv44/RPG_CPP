@@ -2,6 +2,7 @@
 #include <vector>
 #include "./Jeux.hpp"
 #include "./Monstre.hpp"
+#include "./Potion.hpp"
 
 
 vector<Character*> Character::registeredCharacters;
@@ -140,7 +141,9 @@ void Character::playerTurn(){
             // Créer l'attaque spéciale !!!
             break;
         case 3:
-            // Potion small(1,300);
+            // Potion small(1,100);
+            // *this += small;
+            break;
         case 4:
             this->statCharacter();
             this->playerTurn();
