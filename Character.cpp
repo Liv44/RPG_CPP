@@ -9,7 +9,7 @@ vector<Character*> Character::registeredCharacters;
 
 
 
-Character::Character(string name, Job job, int pAtt, int mAtt, int def, int maxHp){
+Character::Character(string name, Job job, int pAtt, int mAtt, int def, int maxHp, int speed){
     this->name = name;
     this->job = job;
     this->physicalAttack = pAtt;
@@ -17,6 +17,7 @@ Character::Character(string name, Job job, int pAtt, int mAtt, int def, int maxH
     this->defense = def;
     this->maxHp = maxHp;
     this->hp = maxHp;
+    this->speed=speed;
     registerCharacter();
 }
 
@@ -109,8 +110,8 @@ void Character::playerTurn(){
                 break;
             }
         }
-    }
-    int choix;
+    } else {
+        int choix;
     cout << "C'est au tour de "<<this->name<<" de jouer"<<endl;
     cout << "Il reste "<<Monstre::getNumberMonsters()<<" montres"<<endl;
     cout << "1 : Attaque basic" << endl;
@@ -151,4 +152,6 @@ void Character::playerTurn(){
             break;
 
     }
+    }
+    
 }

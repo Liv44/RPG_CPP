@@ -42,9 +42,9 @@ class Character
     Job job;
 
     public:
-    Character() : Character("John Doe",FreelancerJob,100,100,50,1000){}
+    Character() : Character("John Doe",FreelancerJob,100,100,50,1000, 23){}
 
-    Character(string name, Job job, int pAtt, int mAtt, int def, int maxHp);
+    Character(string name, Job job, int pAtt, int mAtt, int def, int maxHp, int speed);
 
     void heal(unsigned int healingValue);
 

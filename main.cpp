@@ -16,8 +16,7 @@ using namespace std;
 int main(int argc, char const *argv[])
 {   
     Jeux jeux;
-   jeux.howsTurn();
-    /*
+    
     try {
     
         srand(time(NULL));
@@ -50,6 +49,17 @@ int main(int argc, char const *argv[])
         mage.statCharacter();
         barbarian.statCharacter();
         priest.statCharacter();
+        Jeux::howsTurn();
+        vector <Character *> allCharactersSorted = Jeux::howsTurn();
+        cout << "Trié : ";
+        for (int i = 0; i < allCharactersSorted.size(); i++){
+            cout << allCharactersSorted[i]->name;
+        }
+        for (int i = 0; i < allCharactersSorted.size(); i++){
+            allCharactersSorted[i]->playerTurn();
+        }
+        
+
         vector <Character *> allCharacters = Character::registeredCharacters;
         cout << "Characters : ";
         for (int i = 0; i < allCharacters.size(); i++){
@@ -117,5 +127,5 @@ int main(int argc, char const *argv[])
 
         cout << "End of combat" << endl;
 
-        return 0;*/
+        return 0;
 }

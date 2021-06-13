@@ -21,7 +21,6 @@ Monstre monstre3("monstre3");
 Barbarian barbare("barbare");
 Mage mage("mage");
 Priest priest("pretre");
-/*
 ////////////////////////////////////////////////// INTRO /////////////////////////////////////////////////////////////////////////////////////////
 void Jeux::intro(){
     cout << "Ah vous voilà enfin ! Bienvenue sur notre jeu RPG\n" << endl; 
@@ -99,7 +98,7 @@ void Jeux::mageAttaque()
         cout << "monstre n°3 a " << monstre3.getCurrentHp() << " PV\n" << endl;
 
     } else if (choix == 4){
-        Jeux::MageTurn();
+        //Jeux::MageTurn();
 
     } else {
         cout << "Choisit un chiffre valable !\n" << endl;
@@ -137,37 +136,29 @@ void Jeux::priestAttaque(){
         cout << "monstre n°3 a " << monstre3.getCurrentHp() << " PV\n" << endl;
 
     } else if (choix == 4){
-        Jeux::priestTurn();
+        //Jeux::priestTurn();
 
     } else {
         cout << "Choisit un chiffre valable !\n" << endl;
     }
 }
-
-/////////////////////////////////////////////STATS PERSONNAGE ////////////////////////////////////////////////////////////////////////////////////
-
 ///////////////////////////////////////// TOUR ET ATTAQUE DES PERSONNAGES ////////////////////////////////////////////////////////////////////////////////////////////
-void Jeux::howsTurn() 
+vector<Character *> Jeux::howsTurn() 
 {
-    vector<int> tabSpeed;
-    tabSpeed.push_back(barbare.speed);
-    tabSpeed.push_back(mage.speed);
-    tabSpeed.push_back(priest.speed);
-    tabSpeed.push_back(monstre1.speed);
-    tabSpeed.push_back(monstre2.speed);
-    tabSpeed.push_back(monstre3.speed);
+    vector<Character*> AllCharact = Character::registeredCharacters;
     int i = 0;
-    int save;
-    while (i != tabSpeed.size() -2) {
-        if (tabSpeed[i] > tabSpeed[i+1]) {
-            save = tabSpeed[i];
-            tabSpeed[i] = tabSpeed[i + 1];
-            tabSpeed[i+1] = save;
+    Character* save;
+    cout << AllCharact.size()<<endl;
+    while (i != AllCharact.size() -2) {
+        if (AllCharact[i]->speed > AllCharact[i+1]->speed) {
+            save = AllCharact[i];
+            AllCharact[i] = AllCharact[i + 1];
+            AllCharact[i+1] = save;
             i = 0;
         } else {
             i++;
         } 
     }
-    cout << tabSpeed[0] <<" "<<tabSpeed[1]<<" "<<tabSpeed[2]<<" "<<tabSpeed[3]<<" "<<tabSpeed[4]<<" "<<tabSpeed[5]<<endl;
-    return(tabSpeed);
+    cout << AllCharact[0] <<" "<<AllCharact[1]<<" "<<AllCharact[2]<<" "<<AllCharact[3]<<" "<<AllCharact[4]<<" "<<AllCharact[5]<<endl;
+    return(AllCharact);
 }

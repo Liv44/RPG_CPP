@@ -12,8 +12,8 @@ vector<Character*> Character::registeredPlayers;
 void Monstre::registerMonster(){
         Monstre::registeredMonsters.push_back(this);
 };
-
-Monstre::Monstre(string name) : Character(name,Job::MonstreJob,800,40,15,300) {
+int speed = rand() % 20;
+Monstre::Monstre(string name) : Character(name,Job::MonstreJob,800,40,15,300, speed) {
     Monstre::registerMonster();
     attackNotChanged = physicalAttack;
 }
@@ -59,9 +59,12 @@ void Monstre::monstreTurn(){
     switch(randomAction) {
         case 0:
         this->groupAttack();
+        break;
         case 1:
         this->upDefense();
+        break;
         case 2:
         this->attackMonster();
+        break;
     }
 }
