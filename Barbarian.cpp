@@ -1,9 +1,10 @@
 #include "./Barbarian.hpp"
 
-Barbarian::Barbarian(string name) : Character(name,Job::BarbarianJob,200,0,15,900) {
+Barbarian::Barbarian(string name) : Character(name,Job::BarbarianJob,200,0,15,900, 15) {
     baseAttack = this->physicalAttack;
     baseDefense = this->defense;
-    inFury = false;
+    inFury = false; 
+    registerPlayer();
 }
 
 void Barbarian::enterFury(){
