@@ -205,7 +205,7 @@ void Jeux::priestTurn()
         case 3:
             // Potion small(1,300);
         case 4: 
-            Jeux::statPriest();
+            // Jeux::statPriest();
         case 5:
             playing = false;
             break;
