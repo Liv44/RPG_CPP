@@ -27,21 +27,24 @@ class Character
 
     public:
     string name;
-    static vector<Character*> registeredPlayer;
-    vector<Character *> getAllCharacters();
+    static vector<Character*> registeredCharacters;
+    static vector<Character*> registeredPlayers;
+
+    vector<Character *> getAllPlayers();
     int physicalAttack;
     int magicAttack;
     int defense;
     int maxHp;
     int hp;
+    int speed;
 
     public:
     Job job;
 
     public:
-    Character() : Character("John Doe",FreelancerJob,100,100,50,1000){}
+    Character() : Character("John Doe",FreelancerJob,100,100,50,1000, 23){}
 
-    Character(string name, Job job, int pAtt, int mAtt, int def, int maxHp);
+    Character(string name, Job job, int pAtt, int mAtt, int def, int maxHp, int speed);
 
     void heal(unsigned int healingValue);
 
@@ -53,14 +56,17 @@ class Character
 
     int getCurrentHp();
     int getCurrentDef();
-    static int getRegisteredNumber();
+    static int getNumberPlayers();
+    void registerCharacter();
     void registerPlayer();
+
     void statCharacter();
     void playerTurn();
 
     public:
     void receiveDamage(int damage);
 
+    // Créer l'attaque spéciale !!!
 };
 
 

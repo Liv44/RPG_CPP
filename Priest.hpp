@@ -13,7 +13,8 @@ class Priest : public Character {
     bool tryUsingMp(int mp);
 
     public:
-    Priest(string name) : Character(name,Job::PriestJob,25,200,20,1000), maxMp(100), mp(100){}
+    Priest(string name);
+    
     void healAllie(Character& other);
 };
 

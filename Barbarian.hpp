@@ -13,6 +13,7 @@ class Barbarian : public Character {
     bool inFury;
 
     public:
+    int speed = 15;
     Barbarian(string name);
     void enterFury();
     void leaveFury();

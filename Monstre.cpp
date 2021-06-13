@@ -1,24 +1,26 @@
 #include "./Monstre.hpp"
+#include "./Character.hpp"
 #include <string>
 #include <cstdlib>
 #include <iostream>
 #include <ctime>
 
-vector<Monstre*> Monstre::registeredMonster;
+vector<Monstre*> Monstre::registeredMonsters;
+vector<Character*> Character::registeredPlayers;
 
 
 void Monstre::registerMonster(){
-        Monstre::registeredMonster.push_back(this);
+        Monstre::registeredMonsters.push_back(this);
 };
-
-Monstre::Monstre(string name) : Character(name,Job::MonstreJob,800,40,15,300) {
+int speed = rand() % 20;
+Monstre::Monstre(string name) : Character(name,Job::MonstreJob,800,40,15,300, speed) {
     Monstre::registerMonster();
     attackNotChanged = physicalAttack;
 }
 
 void Monstre::groupAttack(){
-    this->physicalAttack=physicalAttack / getRegisteredNumber();
-    vector <Character *> allCharacters = Character::getAllCharacters();
+    this->physicalAttack=physicalAttack / getNumberPlayers();
+    vector <Character *> allCharacters = Character::registeredPlayers;
     for (int i = 0; i < (allCharacters.size()); i++){
         Monstre::attack(*allCharacters[i]);
     }
@@ -32,29 +34,24 @@ void Monstre::upDefense(){
     cout << "Le monstre fait gagner 20 points de défense à "<< thisMonstre->name <<"\n"<< endl;
 }
 
-int Monstre::getRegisteredMonster(){
-    return Monstre::registeredMonster.size();
+int Monstre::getNumberMonsters(){
+    return Monstre::registeredMonsters.size();
 }
 
 Monstre *  Monstre::getOneMonster(){
     //mettre un random pour le monstre.
     srand(time(NULL));
-    int randomMonster = rand()%getRegisteredMonster();
-    return Monstre::registeredMonster[randomMonster];
+    int randomMonster = rand()%getNumberMonsters();
+    return Monstre::registeredMonsters[randomMonster];
 }
 
 void Monstre::attackMonster(){
-    vector <Character *> allCharacters = Character::getAllCharacters();
-    int randomCharacter = rand()%getRegisteredNumber();
+    vector <Character *> allCharacters = Character::registeredPlayers;
+    int randomCharacter = rand()%getNumberPlayers();
     Character * oneCharacter = allCharacters[randomCharacter];
     Monstre::attack(*oneCharacter);
-    cout << "Le monstre a attaqué"<< oneCharacter->name <<"\n"<< endl;
-
+    cout << "Le monstre a attaqué "<< oneCharacter->name <<"\n"<< endl;
 }
-// Mettre en place 3 actions : 
-// Attaque normale sur une cible aléatoire 
-// Attaque de groupe OK
-// Augmentation de la défense OK
 
 
 void Monstre::monstreTurn(){
@@ -62,9 +59,12 @@ void Monstre::monstreTurn(){
     switch(randomAction) {
         case 0:
         this->groupAttack();
+        break;
         case 1:
         this->upDefense();
+        break;
         case 2:
         this->attackMonster();
+        break;
     }
 }
