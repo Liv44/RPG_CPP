@@ -62,11 +62,12 @@ class Character
 
     void statCharacter();
     void playerTurn();
+    void checkingDeadGuys();
 
     public:
     void receiveDamage(int damage);
 
-    // Créer l'attaque spéciale !!!
+    // Créer l'attaque spéciale ici
 };
 
 

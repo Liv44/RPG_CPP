@@ -21,6 +21,5 @@ void Priest::healAllie(Character& other){
     if(!tryUsingMp(this->maxMp*0.10f)){
             return;
     }
-    // int randomHeal = rand() % 200 + 201;
     other.heal(rand()%200 + 201);
 } 

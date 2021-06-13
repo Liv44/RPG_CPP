@@ -19,24 +19,8 @@ public:
 
     // Choix nom des personnages
     void namePerso();
-
-    //Stat des persos
-    void statCharacters(Character& oneCharacter);
-    // Attaque et stats Mage
-    void mageAttaque();
-
-    // Attaque et stats Prètre
-    void priestAttaque();
-
-    // Attaque et stats Prètre
-    void barbarianAttaque();
-
-    // Tour dans l'ordre
-    void monstreTurn(Monstre& oneMonstre);
     static vector<Character *> howsTurn();
-    // Mage mage;
-    // Priest priest;
-    // Barbarian barbarian;
+
 
     string mageName;
     string priestName;

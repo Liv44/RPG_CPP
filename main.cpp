@@ -25,105 +25,42 @@ int main(int argc, char const *argv[])
         Monstre monstre1("monstre1");
         Monstre monstre2("monstre2");
         Monstre monstre3("monstre3");
-        string mageName = "Olivia";
-        string priestName = "Pierric";
-        string barbarianName = "Luke";
-        // cout << "Entrer le nom de votre Mage: " << endl;
-        // cin >> mageName;
-        // cout << "Le nom de votre mage est " << mageName<< endl;
-
-        // cout << "\nEntrer le nom de votre Prètre: " << endl;
-        // cin >> priestName;
-        // cout << "Le nom de votre prètre est " << priestName << endl;
+        string mageName = "Le Mage";
+        string priestName = "Le Prêtre";
+        string barbarianName = "Le Barbare";
 
 
-        // cout << "\nEntrer le nom de votre Barbarian: " << endl;
-        // cin >> barbarianName;
-        // cout << "Le nom de votre barbarian est " << barbarianName << "\n" << endl;
-        // registeredCharacters = vecteur avec TOUS les persos
-        // registeredMonsters = vecteur avec TOUS les monstres
-        // 
         Mage mage(mageName);
         Barbarian barbarian(barbarianName);
         Priest priest(priestName);
         mage.statCharacter();
         barbarian.statCharacter();
         priest.statCharacter();
-        Jeux::howsTurn();
-        vector <Character *> allCharactersSorted = Jeux::howsTurn();
-        cout << "Trié : ";
+
+        do{
+            vector <Character *> allCharactersSorted = Jeux::howsTurn();
+            cout << "NOUVEAU TOUR DE JEU !!! \nVoici l'ordre de ce tour : ";
+            for (int i = 0; i < allCharactersSorted.size(); i++){
+                cout << allCharactersSorted[i]->name<<" ";
+            }
+            cout<< "."<<endl;
+
         for (int i = 0; i < allCharactersSorted.size(); i++){
-            cout << allCharactersSorted[i]->name;
-        }
-        for (int i = 0; i < allCharactersSorted.size(); i++){
-            allCharactersSorted[i]->playerTurn();
-        }
-        
-
-        vector <Character *> allCharacters = Character::registeredCharacters;
-        cout << "Characters : ";
-        for (int i = 0; i < allCharacters.size(); i++){
-            cout<<allCharacters[i]->name;
-        }
-
-        vector <Character *> allPlayers = Character::registeredPlayers;
-        cout << "Players : ";
-        for (int i = 0; i < allPlayers.size(); i++){
-            cout<<allPlayers[i]->name;
-        }
-
-        vector <Monstre *> allMonsters = Monstre::registeredMonsters;
-        cout << "Monstres : ";
-        for (int i = 0; i < allMonsters.size(); i++){
-            cout<<allMonsters[i]->name;
-        }
-        
-
-        // for (int i = 0; i < allCharacters.size(); i++){
-        //     allCharacters[i]->playerTurn();
-        // }
-        // jeux.MageTurn();
-        // jeux.priestAttaque();
-        // jeux.barbarianAttaque();
-
-        
-
-        // monstre1.groupAttack();
-        // monstre1.attack(gandalf);
-        // gandalf.attack(monstre1);
-        // cout << "Nombre de joueurs : " << Character::getRegisteredNumber()<<endl;
-        // cout << "Nombre de monstres : " << Monstre::getRegisteredMonster()<<endl;
-        // cout << "test :"<<gandalf.getOneCharacter()->name<<endl;
-
-
-
-        // cout << "Gandalf a " << gandalf.getCurrentHp() << " PV" << endl;
-        // cout << "monstre1 a " << monstre1.getCurrentHp() << " PV" << endl;
-        // monstre1.groupAttack();
-        // cout << "Gandalf a " << gandalf.getCurrentDef() << " DEF" << endl;
-        // cout << "monstre1 a " << monstre1.getCurrentDef()<< " defense"<<endl;
-        // monstre1.upDefense();
-        // cout << "monstre1 a " << monstre1.getCurrentDef()<< " defense"<<endl;
-        
-        // Potion small(3,100);
-    
-        // gandalf += small;
-        // gandalf += small;
-        // gandalf += small;
-        // gandalf += small;
-        // cout << "All potions were drunk !" << endl;
+            if (allCharactersSorted[i]->getCurrentHp()>0){
+                allCharactersSorted[i]->playerTurn();
+            }
+            if (Monstre::registeredMonsters.size()==0){
+                cout << "Bravo! Vous avez vaincu les monstres !" << endl;
+                break;
+            } else if (Character::registeredPlayers.size()==0){
+                cout<< "Dommage, vous avez perdu."<<endl;
+            }
+        };
+        } while (Character::registeredPlayers.size()==0 || Monstre::registeredMonsters.size()!=0) ;
     }
-        // try {
-        // // }
-        // // catch(IllegalFury& illegalF){
-        // //     cout << "An illegal barbarian fury operation occured : " << illegalF.what() << endl;
-        // // }
         catch(EmptyPotion& ep){
             cout << "An illegal barbarian fury operation occured : " << ep.what() << endl;
         }
-        // // catch(std::exception& e){
-        // //     cout << "An exception occured : " << e.what() << endl;
-        // }
 
         cout << "End of combat" << endl;
 

@@ -12,20 +12,20 @@ vector<Character*> Character::registeredPlayers;
 void Monstre::registerMonster(){
         Monstre::registeredMonsters.push_back(this);
 };
-int speed = rand() % 20;
-Monstre::Monstre(string name) : Character(name,Job::MonstreJob,800,40,15,300, speed) {
+Monstre::Monstre(string name) : Character(name,Job::MonstreJob,800,40,15,300, rand() % 20) {
     Monstre::registerMonster();
     attackNotChanged = physicalAttack;
 }
 
 void Monstre::groupAttack(){
+    cout <<this->name << " fait une attaque de groupe !\n" << endl;
+
     this->physicalAttack=physicalAttack / getNumberPlayers();
     vector <Character *> allCharacters = Character::registeredPlayers;
     for (int i = 0; i < (allCharacters.size()); i++){
         Monstre::attack(*allCharacters[i]);
     }
     this->physicalAttack=attackNotChanged;
-    cout << "Le monstre fait une attaque de groupe !\n" << endl;
 }
 
 void Monstre::upDefense(){
@@ -49,13 +49,14 @@ void Monstre::attackMonster(){
     vector <Character *> allCharacters = Character::registeredPlayers;
     int randomCharacter = rand()%getNumberPlayers();
     Character * oneCharacter = allCharacters[randomCharacter];
+    cout << "Le monstre attaque "<< oneCharacter->name <<"\n"<< endl;
+
     Monstre::attack(*oneCharacter);
-    cout << "Le monstre a attaqué "<< oneCharacter->name <<"\n"<< endl;
 }
 
 
 void Monstre::monstreTurn(){
-    int randomAction = 0;
+    int randomAction = rand()%3;
     switch(randomAction) {
         case 0:
         this->groupAttack();

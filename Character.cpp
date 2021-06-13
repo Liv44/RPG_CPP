@@ -99,26 +99,34 @@ void Character::statCharacter(){
     }
     cout<< "Classe : "<<jobName<<endl;
     cout<< "PV :"<< this->getCurrentHp()<<endl;
+    cout<< "Défense : "<< this->getCurrentDef()<<"\n"<<endl;
+
 }
 
 void Character::playerTurn(){
+    Character::checkingDeadGuys();
+    cout << "C'est au tour de "<<this->name<<" de jouer\n"<<endl;
+
     if (this->job == 7){
         vector < Monstre *> allMonsters = Monstre::registeredMonsters;
         for (int i = 0; i < allMonsters.size(); i++){
             if (this->name == allMonsters[i]->name){
+                Character::checkingDeadGuys();
                 allMonsters[i]->monstreTurn();
+                Character::checkingDeadGuys();
                 break;
             }
         }
     } else {
         int choix;
-    cout << "C'est au tour de "<<this->name<<" de jouer"<<endl;
-    cout << "Il reste "<<Monstre::getNumberMonsters()<<" montres"<<endl;
-    cout << "1 : Attaque basic" << endl;
-    cout << "2 : Attaque spéciale" << endl; // Barbarian -> Furie/ Mage -> Boule de feu / Priest -> Soin
-    cout << "3 : Boire une potion" << endl; // Le groupe disposera d'une potion commune au lancement du combat
+    cout << "Il reste "<<Monstre::getNumberMonsters()<<" monstres"<<endl;
+    cout << "1 : Attaquer." << endl;
+    // cout << "2 : Attaque spéciale" << endl; 
+        // Barbarian -> Furie/ Mage -> Boule de feu / Priest -> Soin
+    // cout << "3 : Boire une potion" << endl; 
+        // Le groupe disposera d'une potion commune au lancement du combat
     cout << "4 : Statut du personnage" << endl;
-    cout << "5 : Quit game ! " << endl;
+    // cout << "5 : Quit game ! " << endl;
 
     cout << endl << "Choix : ";
     cin >> choix;
@@ -130,7 +138,7 @@ void Character::playerTurn(){
             int choix;
             cout<< "Qui voulez-vous attaquer ?"<<endl;
             for (int i = 0; i < Monstre::registeredMonsters.size(); i++){
-                cout<< i+1 << Monstre::registeredMonsters[i]->name<<i+1<< "a "<<Monstre::registeredMonsters[i]->getCurrentHp()<<"PV"<<endl;
+                cout<< i+1 <<"- "<< Monstre::registeredMonsters[i]->name<< " a "<<Monstre::registeredMonsters[i]->getCurrentHp()<<"PV."<<endl;
                 };
             cin >> choix;
             this->attack(*(Monstre::registeredMonsters[choix-1]));
@@ -153,5 +161,32 @@ void Character::playerTurn(){
 
     }
     }
+    Character::checkingDeadGuys();
     
+}
+
+void Character::checkingDeadGuys(){
+    vector<Monstre *> MonstersAlive = Monstre::registeredMonsters;
+    vector<Character *> PlayersAlive = Character::registeredPlayers;
+    vector<Character *> CharactersAlive = Character::registeredCharacters;
+
+
+    for (int i = 0; i < MonstersAlive.size(); i++){
+        if (MonstersAlive[i]->hp==0){
+            cout<< MonstersAlive[i]->name<< " est mort !"<<endl;
+            (Monstre::registeredMonsters).erase (Monstre::registeredMonsters.begin()+i);
+        }
+    }
+
+    for (int i = 0; i < PlayersAlive.size(); i++){
+        if (PlayersAlive[i]->hp==0){
+            cout<< PlayersAlive[i]->name<< " est mort !"<<endl;
+            (Character::registeredPlayers).erase (Character::registeredPlayers.begin()+i);
+        }
+    }
+    for (int i = 0; i < CharactersAlive.size(); i++){
+        if (CharactersAlive[i]->hp==0){
+            (Character::registeredCharacters).erase (Character::registeredCharacters.begin()+i);
+        }
+    }
 }
