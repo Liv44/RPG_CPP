@@ -257,7 +257,7 @@ void Jeux::barbarianAttaque()
     }
 }
 
-void Jeux::howsTurn() 
+vector<int> Jeux::howsTurn() 
 {
     vector<int> tabSpeed;
     tabSpeed.push_back(barbare.speed);
@@ -278,4 +278,5 @@ void Jeux::howsTurn()
         }
         cout<< tabSpeed[i] <<endl;
     }
+    return(tabSpeed);
 }
