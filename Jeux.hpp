@@ -37,7 +37,7 @@ public:
     void yourTurn();
     void priestTurn();
     void barbarianTurn();
-
+    void howsTurn();
     // Mage mage;
     // Priest priest;
     // Barbarian barbarian;
