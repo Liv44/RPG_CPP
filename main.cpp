@@ -16,8 +16,8 @@ using namespace std;
 int main(int argc, char const *argv[])
 {   
     Jeux jeux;
-    vector<int> turn = jeux.howsTurn();
-    
+   jeux.howsTurn();
+    /*
     try {
     
         srand(time(NULL));
@@ -100,5 +100,5 @@ int main(int argc, char const *argv[])
 
         cout << "End of combat" << endl;
 
-        return 0;
+        return 0;*/
 }

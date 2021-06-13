@@ -31,4 +31,4 @@ clean :
 fclean : clean
 	rm rpg
 
-re : clean rpg
+re : fclean rpg

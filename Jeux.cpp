@@ -21,7 +21,7 @@ Monstre monstre3("monstre3");
 Barbarian barbare("barbare");
 Mage mage("mage");
 Priest priest("pretre");
-
+/*
 ////////////////////////////////////////////////// INTRO /////////////////////////////////////////////////////////////////////////////////////////
 void Jeux::intro(){
     cout << "Ah vous voilà enfin ! Bienvenue sur notre jeu RPG\n" << endl; 
@@ -255,7 +255,7 @@ void Jeux::barbarianAttaque()
             break;
 
     }
-}
+}*/
 
 vector<int> Jeux::howsTurn() 
 {
@@ -266,17 +266,18 @@ vector<int> Jeux::howsTurn()
     tabSpeed.push_back(monstre1.speed);
     tabSpeed.push_back(monstre2.speed);
     tabSpeed.push_back(monstre3.speed);
-    int i;
+    int i = 0;
     int save;
-    while (i != tabSpeed.size() -1) {
+    while (i != tabSpeed.size() -2) {
         if (tabSpeed[i] > tabSpeed[i+1]) {
             save = tabSpeed[i];
             tabSpeed[i] = tabSpeed[i + 1];
             tabSpeed[i+1] = save;
+            i = 0;
         } else {
             i++;
-        }
-        cout<< tabSpeed[i] <<endl;
+        } 
     }
+    cout << tabSpeed[0] <<" "<<tabSpeed[1]<<" "<<tabSpeed[2]<<" "<<tabSpeed[3]<<" "<<tabSpeed[4]<<" "<<tabSpeed[5]<<endl;
     return(tabSpeed);
 }
