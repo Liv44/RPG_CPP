@@ -41,20 +41,37 @@ int main(int argc, char const *argv[])
         // cout << "\nEntrer le nom de votre Barbarian: " << endl;
         // cin >> barbarianName;
         // cout << "Le nom de votre barbarian est " << barbarianName << "\n" << endl;
-
+        // registeredCharacters = vecteur avec TOUS les persos
+        // registeredMonsters = vecteur avec TOUS les monstres
+        // 
         Mage mage(mageName);
         Barbarian barbarian(barbarianName);
         Priest priest(priestName);
         mage.statCharacter();
         barbarian.statCharacter();
         priest.statCharacter();
+        vector <Character *> allCharacters = Character::registeredCharacters;
+        cout << "Characters : ";
+        for (int i = 0; i < allCharacters.size(); i++){
+            cout<<allCharacters[i]->name;
+        }
 
-        monstre3.statCharacter();
-        monstre1.monstreTurn();
-        priest.playerTurn();
-        monstre2.statCharacter();
+        vector <Character *> allPlayers = Character::registeredPlayers;
+        cout << "Players : ";
+        for (int i = 0; i < allPlayers.size(); i++){
+            cout<<allPlayers[i]->name;
+        }
 
+        vector <Monstre *> allMonsters = Monstre::registeredMonsters;
+        cout << "Monstres : ";
+        for (int i = 0; i < allMonsters.size(); i++){
+            cout<<allMonsters[i]->name;
+        }
+        
 
+        // for (int i = 0; i < allCharacters.size(); i++){
+        //     allCharacters[i]->playerTurn();
+        // }
         // jeux.MageTurn();
         // jeux.priestAttaque();
         // jeux.barbarianAttaque();

@@ -49,7 +49,6 @@ void Jeux::intro(){
 }  
 
 ///////////////////////////////////////////// NOM PERSONNAGE ////////////////////////////////////////////////////////////////////////////////////
-
 void Jeux::namePerso(){
     cout << "Entrer le nom de votre Mage: " << endl;
     cin >> mageName;
@@ -147,117 +146,8 @@ void Jeux::priestAttaque(){
 
 /////////////////////////////////////////////STATS PERSONNAGE ////////////////////////////////////////////////////////////////////////////////////
 
-void Jeux::statMage()
-{
-    cout << "Statut personnage:\n " << endl;
-    cout << "Name: "<< mageName << endl;
-    cout << "Class: " << Job::MageJob << endl;
-    cout << "PV: "<< "" << " / " << "" << endl;
-}
-
 ///////////////////////////////////////// TOUR ET ATTAQUE DES PERSONNAGES ////////////////////////////////////////////////////////////////////////////////////////////
-
-void Jeux::MageTurn()
-{
-    cout << "MAGE TURN:\n" << endl;
-    cout << "Nombre de joueurs : " << Character::getRegisteredNumber()<<endl;
-    cout << "Nombre de monstres : " << Monstre::getRegisteredMonster()<<endl;
-    cout << "1 : Attaque basic" << endl;
-    cout << "2 : Boule de feu" << endl; // Barbarian -> Furie/ Mage -> Boule de feu / Priest -> Soin
-    cout << "3 : Boire une potion" << endl; // Le groupe disposera d'une potion commune au lancement du combat
-    cout << "4 : Statut personnage" << endl;
-    cout << "5 : Quit game ! " << endl;
-
-    cout << endl << "Choix : ";
-    cin >> choix;
-    cout << "\n" << endl;
-
-    switch(choix)
-    {   
-        case 1:
-            Jeux::mageAttaque();
-        case 2:
-            Jeux::mageAttaque();
-        case 3:
-            // Potion small(1,300);
-        case 4: 
-            Jeux::statMage();
-        case 5:
-            playing = false;
-            break;
-        default:
-            break;
-
-    }
-}
-
-void Jeux::priestTurn()
-{
-    cout << "PRIEST TURN:\n" << endl;
-    cout << "Nombre de joueurs : " << Character::getRegisteredNumber()<<endl;
-    cout << "Nombre de monstres : " << Monstre::getRegisteredMonster()<<endl;
-    cout << "1 : Attaque basic" << endl;
-    cout << "2 : Soin" << endl; // Barbarian -> Furie/ Mage -> Boule de feu / Priest -> Soin
-    cout << "3 : Boire une potion" << endl; // Le groupe disposera d'une potion commune au lancement du combat
-    cout << "4 : Statut personnage" << endl;
-    cout << "5 : Quit game ! " << endl;
-
-    cout << endl << "Choix : ";
-    cin >> choix;
-    cout << "\n" << endl;
-
-    switch(choix)
-    {   
-        case 1:
-            Jeux::priestAttaque();
-        case 2:
-            Jeux::priestAttaque();
-        case 3:
-            // Potion small(1,300);
-        case 4: 
-            // Jeux::statPriest();
-        case 5:
-            playing = false;
-            break;
-        default:
-            break;
-
-    }
-}
-
-void Jeux::barbarianAttaque()
-{
-    cout << "BARBARIAN TURN:\n" << endl;
-    cout << "1 : Attaque -> basic" << endl;
-    cout << "2 : Attaque -> Furie mode" << endl; // Barbarian -> Furie/ Mage -> Boule de feu / Priest -> Soin
-    cout << "3 : Boire une potion" << endl; // Le groupe disposera d'une potion commune au lancement du combat
-    cout << "4 : Statut personnage" << endl;
-    cout << "5 : Quit game ! " << endl;
-
-    cout << endl << "Choix : ";
-    cin >> choix;
-    cout << "\n" << endl;
-
-    switch(choix)
-    {   
-        case 1:
-            // Jeux::encounter();
-        case 2:
-            // Jeux::encounter();
-        case 3:
-            // Potion small(1,300);
-        case 4: 
-            Jeux::statMage();
-        case 5:
-            playing = false;
-            break;
-        default:
-            break;
-
-    }
-}*/
-
-vector<int> Jeux::howsTurn() 
+void Jeux::howsTurn() 
 {
     vector<int> tabSpeed;
     tabSpeed.push_back(barbare.speed);

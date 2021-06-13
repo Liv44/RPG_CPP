@@ -4,7 +4,9 @@
 #include "./Monstre.hpp"
 
 
-vector<Character*> Character::registeredPlayer;
+vector<Character*> Character::registeredCharacters;
+
+
 
 
 Character::Character(string name, Job job, int pAtt, int mAtt, int def, int maxHp){
@@ -15,7 +17,7 @@ Character::Character(string name, Job job, int pAtt, int mAtt, int def, int maxH
     this->defense = def;
     this->maxHp = maxHp;
     this->hp = maxHp;
-
+    registerCharacter();
 }
 
 
@@ -39,7 +41,9 @@ Character& Character::operator+=(Potion& p){
 
 void Character::attack(Character& defender) {
     int damage = this->physicalAttack - defender.defense;
+    string nameDefender = defender.name;
     defender.receiveDamage(damage);
+    cout<< this->name<<" a attaqué "<<nameDefender<<" (- "<<damage<<"PV)."<<endl; 
 }
 
 int Character::getCurrentHp(){
@@ -49,12 +53,16 @@ int Character::getCurrentDef(){
     return this->defense;
 }
 
-void Character::registerPlayer(){
-        Character::registeredPlayer.push_back(this);
+void Character::registerCharacter(){
+        Character::registeredCharacters.push_back(this);
 };
+void Character::registerPlayer(){
+    Character::registeredPlayers.push_back(this);
+   
+}
 
-int Character::getRegisteredNumber(){
-    return Character::registeredPlayer.size();
+int Character::getNumberPlayers(){
+    return Character::registeredPlayers.size();
 }
 
 
@@ -72,13 +80,7 @@ void Character::receiveDamage(int damage){
     }
 }
 
-vector<Character *> Character::getAllCharacters(){
-    vector<Character *> allCharacters;
-    for (int i = 0; i < (Character::registeredPlayer.size()); i++){
-        allCharacters.push_back(Character::registeredPlayer[i]);
-    }
-    return allCharacters;
-}
+
 
 
 void Character::statCharacter(){
@@ -99,9 +101,18 @@ void Character::statCharacter(){
 }
 
 void Character::playerTurn(){
+    if (this->job == 7){
+        vector < Monstre *> allMonsters = Monstre::registeredMonsters;
+        for (int i = 0; i < allMonsters.size(); i++){
+            if (this->name == allMonsters[i]->name){
+                allMonsters[i]->monstreTurn();
+                break;
+            }
+        }
+    }
     int choix;
     cout << "C'est au tour de "<<this->name<<" de jouer"<<endl;
-    cout << "Il reste "<<Monstre::getRegisteredMonster()<<" montres"<<endl;
+    cout << "Il reste "<<Monstre::getNumberMonsters()<<" montres"<<endl;
     cout << "1 : Attaque basic" << endl;
     cout << "2 : Attaque spéciale" << endl; // Barbarian -> Furie/ Mage -> Boule de feu / Priest -> Soin
     cout << "3 : Boire une potion" << endl; // Le groupe disposera d'une potion commune au lancement du combat
@@ -117,11 +128,11 @@ void Character::playerTurn(){
         case 1:
             int choix;
             cout<< "Qui voulez-vous attaquer ?"<<endl;
-            for (int i = 0; i < Monstre::registeredMonster.size(); i++){
-                cout<< i+1 << Monstre::registeredMonster[i]->name<<i+1<< "a "<<Monstre::registeredMonster[i]->getCurrentHp()<<"PV"<<endl;
+            for (int i = 0; i < Monstre::registeredMonsters.size(); i++){
+                cout<< i+1 << Monstre::registeredMonsters[i]->name<<i+1<< "a "<<Monstre::registeredMonsters[i]->getCurrentHp()<<"PV"<<endl;
                 };
             cin >> choix;
-            this->attack(*(Monstre::registeredMonster[choix-1]));
+            this->attack(*(Monstre::registeredMonsters[choix-1]));
             break;
         case 2:
             cout <<"Attaque spéciale !!!!"<<endl;

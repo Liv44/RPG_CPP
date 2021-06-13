@@ -27,8 +27,10 @@ class Character
 
     public:
     string name;
-    static vector<Character*> registeredPlayer;
-    vector<Character *> getAllCharacters();
+    static vector<Character*> registeredCharacters;
+    static vector<Character*> registeredPlayers;
+
+    vector<Character *> getAllPlayers();
     int physicalAttack;
     int magicAttack;
     int defense;
@@ -54,8 +56,10 @@ class Character
 
     int getCurrentHp();
     int getCurrentDef();
-    static int getRegisteredNumber();
+    static int getNumberPlayers();
+    void registerCharacter();
     void registerPlayer();
+
     void statCharacter();
     void playerTurn();
 
