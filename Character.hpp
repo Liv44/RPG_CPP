@@ -56,10 +56,12 @@ class Character
     static int getRegisteredNumber();
     void registerPlayer();
     void statCharacter();
+    void playerTurn();
 
     public:
     void receiveDamage(int damage);
 
+    // Créer l'attaque spéciale !!!
 };
 
 
